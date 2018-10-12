@@ -152,6 +152,7 @@ public class EnfrentamientoSimple{
        while( noHabemusFichas == false){
        if(quienVa == false){
          System.out.println("Turno del Jugador 1");
+         usuario1.Dummy.horaDelDuelo(fichasJugador1);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
@@ -160,10 +161,9 @@ public class EnfrentamientoSimple{
         if(quienVa == true){
             System.out.println("Turno del Jugador 2");
             noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
-            
+            usuario2.Dummy.horaDelDuelo(fichasJugador2);
             if( noHabemusFichas == true){
              puntajeJugador2=ficha.getValor(fichasJugador1);
-             
             }
             quienVa = false;  
         }  
@@ -172,7 +172,7 @@ public class EnfrentamientoSimple{
        fin = true;
       }
     }
-  }  
+  } 
       if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
        fin = true;
       }
