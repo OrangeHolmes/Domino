@@ -1,0 +1,25 @@
+public class Jugador{
+public String nombre;
+public Ficha [] fichasJugador;
+public int puntos;
+
+ public Jugador(){
+ }
+
+ public Jugador(String tipoJugador, int puntos, Ficha [] fichas){
+  this.nombre = tipoJugador; 
+  this.puntos = puntos;
+  this.fichasJugador = new Ficha [fichas.length];
+  
+   for(int i=0; i < fichas.length; ++i) {
+    this.fichasJugador [i] = fichas [i];
+   }
+
+  } 
+ 
+public Ficha[] getFichas(){
+
+return fichasJugador;
+} 
+
+}
