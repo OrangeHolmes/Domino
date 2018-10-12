@@ -117,7 +117,7 @@ public class EnfrentamientoSimple{
      return quienVa;
    }
    
-   public String turnos(int posicionFichaJ, String ladoJ, Ficha[] fichasJ){
+   public void turnos(int posicionFichaJ, String ladoJ, Ficha[] fichasJ){
        int ladoI=0;
        int ladoD=0;
        int posicionFicha = 0;
@@ -128,9 +128,9 @@ public class EnfrentamientoSimple{
         interfaz.mostrarfichasMesa(tablero);
       }
       else{
-      this.tablero = tablero + " "+ ladoI + "|" + ladoD;
+       this.tablero = tablero + " "+ ladoI + "|" + ladoD;
       }
-      return this.tablero; 
+      System.out.println(this.tablero);
    }
   
    
@@ -154,18 +154,18 @@ public class EnfrentamientoSimple{
          System.out.println("Turno del Jugador 1");
          posicionFichaJ1=interfaz.decidirFicha();
          String ladoJ1 = interfaz.decidirDireccion();
-         this.tablero = turnos(posicionFichaJ1,ladoJ1,this.fichasJugador1);
+         turnos(posicionFichaJ1,ladoJ1,this.fichasJugador1);
          
-         noHabemusFichas=this.ficha.hayFichas(fichasJugador1);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);}  
          quienVa=true;
         if(quienVa == true){
             posicionFichaJ2=interfaz.decidirFicha();
             String ladoJ2 = interfaz.decidirDireccion();
-            this.tablero = turnos(posicionFichaJ2,ladoJ2,this.fichasJugador2);
-            ficha.hayFichas(fichasJugador1);
-            noHabemusFichas=this.ficha.hayFichas(fichasJugador2);
+            turnos(posicionFichaJ2,ladoJ2,this.fichasJugador2);
+            ficha.noHayFichas(fichasJugador1);
+            noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
             
             if( noHabemusFichas == true){
              puntajeJugador2=ficha.getValor(fichasJugador1); }
