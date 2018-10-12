@@ -1,7 +1,7 @@
 public class Jugador{
-public String nombre;
-public Ficha [] fichasJugador;
-public int puntos;
+    public String nombre;
+    public Ficha [] fichasJugador;
+    public int puntos;
 
  public Jugador(){
  }
@@ -16,10 +16,12 @@ public int puntos;
    }
 
   } 
- 
-public Ficha[] getFichas(){
+ public int cantidadFichas(){
+     
+    }
+  public Ficha[] getFichas(){
 
-return fichasJugador;
-} 
+      return fichasJugador;
+    } 
 
 }
