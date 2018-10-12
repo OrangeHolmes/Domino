@@ -1,0 +1,9 @@
+public class Dealer{
+  
+    public Ficha[] fichasRestantes;
+    public String siguiente;
+    public boolean turno;
+ 
+    int x = (int) Math.random();
+    
+}
