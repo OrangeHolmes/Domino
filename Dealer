@@ -14,6 +14,6 @@ public class Dealer{
     this.siguiente = siguente;
     this.turno = turno;
     this.fichasRestantes = fichasRestantes;
-    while(fichasRestantes
+    while(fichasRestantes //PREGUNTAR!!!
     }
 }
