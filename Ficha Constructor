@@ -1,0 +1,109 @@
+import java.util.Random;
+
+public class Ficha{
+   private int ladoIzquierdo;
+   private int ladoDerecho;
+   private boolean fichaEntregada;
+   
+    public Ficha(){
+    }
+   
+    public Ficha(int x, int y,boolean VoF){
+    
+    fichaEntregada = VoF;
+    ladoIzquierdo = x;
+    ladoDerecho = y ;
+   }
+    
+    public boolean isFichaEntregada(){
+      return fichaEntregada;
+    }
+    public void setFichaEntregada(boolean fichaEntregada){
+            this.fichaEntregada = fichaEntregada;
+        }
+        
+    public int getLadoIzquierdo(){
+        return ladoIzquierdo;
+    }
+    
+    public int getLadoDerecho(){
+        return ladoDerecho;
+    }
+   
+    public  Ficha getFicha(Ficha[] vector,int posicion) {
+      
+      return vector[posicion];    
+      }
+      
+    public void asignarFichas(Ficha [] fichasRecibidas, Ficha [] fichasEntregadas){
+      Random random = new Random();
+      int cantidadDeFichas= 28;
+      int cantidadFichasInicio = 7;
+      int aleatorio = 0;
+       for(int i = 0; i < cantidadFichasInicio; i++){
+        aleatorio = random.nextInt(cantidadDeFichas);
+        fichasEntregadas[i] = fichasRecibidas [aleatorio];
+    }
+        
+   }
+   
+   public boolean noHayFichas(Ficha[] fichas){
+    boolean quedan= true;
+    int conteo = 0;
+    Ficha ficha = new Ficha();
+     for(int i =0; i<7; ++i){
+     ficha = getFicha(fichas,i);
+     if(ficha == null){
+      ++conteo;  }
+    }
+     if( conteo == 7){
+      quedan = true;}
+     return quedan ;
+   }
+   
+   public int getValor(Ficha[] fichas){
+     Ficha ficha = new Ficha();
+     int puntos =0;
+     ladoIzquierdo = 0;
+     ladoDerecho = 0;
+     for(int i = 0; i < 7; ++i){
+      puntos+=ladoIzquierdo= ficha.getFicha(fichas,i).getLadoIzquierdo();
+      puntos+=ladoDerecho= ficha.getFicha(fichas,i).getLadoDerecho(); 
+    } 
+       return puntos;}
+
+   public Ficha escogerFicha(Ficha[] fichas,int n){
+    Ficha miFicha = new Ficha();
+    miFicha = fichas[n];
+    return miFicha; }
+   
+   public boolean esValida(Ficha ficha){
+   boolean es = true;
+   if(ficha == null ){
+    es= false;}
+   return es;
+   }
+   public String dondePongo(int puedoI, int puedoD, int ultimoI, int ultimoD){
+   String lado = null;
+   if( puedoD == ultimoI){
+    lado = "i";}
+   else if( puedoI == ultimoI){ // Al devolver una -i o un -d se que la ficha se puede poner, pero que debo darle la vuelta a sus lados
+    lado="-i";}
+   else if(puedoI == ultimoD){
+    lado = "d";}
+   else if(puedoD== ultimoD){
+    lado = "-d";}
+   else{
+   System.out.println("Su ficha no se puede poner de ese lado");}
+   return lado;}
+   
+   public String toString(){
+     return ladoIzquierdo + "|"+ ladoDerecho; }
+     
+}
+        
+
+    
+    
+    
+ 
