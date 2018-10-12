@@ -1,19 +1,69 @@
 public class Dealer{
-  
-    public Ficha[] fichasRestantes;
+ 
+    
+    Ficha[] fichasRestantes = new Ficha[14];
+    private Ficha ficha = new Ficha();
+    private Jugador jugador = new Jugador();
     public String siguiente;
     public boolean turno;
- 
-    int x = (int) Math.random();
+   
+    int x = (int) Math.random() * fichasRestantes.length;
     
     public Dealer(){
-    Dealer dealer = new Dealer;
+        Dealer dealer = new Dealer();
     }
     
-    public tomarDecision(String siguiente, String fichasRestantes, boolean turno){
-    this.siguiente = siguente;
-    this.turno = turno;
-    this.fichasRestantes = fichasRestantes;
-    while(fichasRestantes //PREGUNTAR!!!
+    public boolean tomarDecision(Ficha fichaSiguiente, Ficha[] fichasRestantes, boolean turno){
+        boolean reparte = false;
+        this.siguiente = siguiente;
+        this.turno = turno;
+        this.fichasRestantes = fichasRestantes;
+        while(fichasRestantes.length > 0 && turno){
+            
+        }
+          return reparte;                                              //PREGUNTAR!!!
     }
-}
+    
+    public boolean gano(Jugador jugador2){
+       boolean ganoJ1 = false;
+       if(getCantcartas(jugador1) = 0){
+           ganoJ1 = true;
+        }
+       if(getCantCartas(jugador2) != 0){
+           if(getPuntosJ1(jugador.getFichas()) > getPuntosJ2(jugador.getFichas)){
+                   ganoJ1 = true;
+                }
+           }
+       return ganoJ1;
+   }
+   public int getPuntosGanador(Ficha[] fRestantesJ1, Ficha[] fRestantesJ2){
+        int puntosJ1 = ficha.getValor(fRestantesJ1);
+        int puntosJ2 = ficha.getValor(fRestantesJ2);
+        int puntosGanador = 0;
+        if(puntosJ1 > puntosJ2){
+            puntosGanador = puntosJ1 += puntosJ2;
+        }
+        else if(puntosJ2 > puntosJ1){
+            puntosGanador = puntosJ2 += puntosJ1;
+        }
+            return puntosGanador;
+        }
+   public void repartir(){
+        
+        }  
+    }
+        
+        
+        
+        
+        
+        //getpuntos ficha.getValor()
+    
+    
+    
+   // public int getPuntosJ2(){
+    //getpuntos ficha.getValor()
+    
+    
+
+
