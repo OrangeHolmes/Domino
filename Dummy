@@ -1,0 +1,18 @@
+public class Dummy { 
+  private Jugador jugador;
+  
+  public Dummy(Jugador nuevo){
+    Jugador dummy = nuevo; 
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
