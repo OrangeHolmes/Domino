@@ -1,23 +1,63 @@
+
 public class Agresivo {
-    
-  private Jugador agresivo;
   private Ficha[] misFichas;
   private Ficha miFicha;
-  
+  private Mesa miTablero;
+ 
+  public Agresivo(){}
   public Agresivo(Jugador nuevo){
     Jugador agresivo = nuevo;
     }
+  public void ordenar(Ficha[]fichas){
+   int valor1 = 0;
+   int valor2 = 0;
+   for(int i=0; i <fichas.length; ++i){
+    valor1+=fichas[i].getLadoIzquierdo();
+    valor1+= fichas[i].getLadoDerecho();
+     for(int j = 1; j < fichas.length;++j){
+      valor2+=fichas[j].getLadoIzquierdo();
+      valor2+= fichas[j].getLadoDerecho();
+      if(valor1 < valor2){
+      Ficha tmp = fichas[i];
+      fichas[i] = fichas[j];
+      fichas[i] = tmp;}  
+      }
+     }
+    miFicha.mostrarFichas(fichas);
+    //return fichas;
+   }  
+    
+    }
+  // public void queEsLaVaraPapi(Ficha[] arreglo, int ultimoI, int ultimoD){
+   // //Random aleatorio = new Random();
+   // this.misFichas = arreglo;
+   // boolean puedoSeguir= false;
+   // int ladoI=0;
+   // int ladoD=0;
+   // String posicion = null;
+   
+   
+   
+   
+   // // for(int i = 0; i < arreglo.length - 1; i++) {
+    // for(int j = 0; j < arreglo.length - 1; j++){
+    // if (arreglo[j] < arreglo[j + 1]){
+     // int tmp = arreglo[j+1];
+     // arreglo[j+1] = arreglo[j];
+     // arreglo[j] = tmp;}
+    // }
+    // }
+
+    // while(puedoSeguir == false){
+    // int n = aleatorio.nextInt(7)+1;
+    // this.miFicha = miFicha.escogerFicha(fichasJ,n);
+    // puedoSeguir= miFicha.esValida(miFicha);
+    // ladoI= miFicha.getLadoIzquierdo();
+    // ladoD= miFicha.getLadoDerecho();
+    // posicion = miFicha.comoColoco(ladoI, ladoD, ultimoI, ultimoD);
+    // if( posicion != null){
+     // puedoSeguir = true;}
+    // }
+    // this.miTablero.colocarFicha(posicion, ladoI, ladoD);
+   // }  
   
-   
-    
-    
-    
-    
-    
-    
-    
-   
-    
-    
-    
-}
