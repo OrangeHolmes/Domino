@@ -1,12 +1,27 @@
 public class Dummy { 
   private Jugador jugador;
+  private Mesa miTablero; 
+  private Interfaz interfaz;
   
   public Dummy(Jugador nuevo){
-    Jugador dummy = nuevo; 
+    Jugador dummy = nuevo;
     }
     
-    
-    
+  public void escogerFicha(Ficha [] fichas){
+   Ficha ficha = new Ficha();
+   int posicionFichaJ=interfaz.decidirFicha();
+   String ladoF = interfaz.decidirDireccion();
+   miTurno(posicionFichaJ,ladoF, fichas, ficha);
+  } 
+  
+    private void miTurno(int posicionFichaJ, String ladoF, Ficha[] fichasJ, Ficha miFicha){
+       int ladoI=0;
+       int ladoD=0;
+       int posicionFicha = 0;
+      ladoI= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoIzquierdo();
+      ladoD= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoDerecho();
+      this.miTablero.colocarFicha(ladoF, ladoI, ladoD);
+   }
     
     
     
