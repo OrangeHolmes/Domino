@@ -5,8 +5,8 @@ public class Ficha{
    private int ladoDerecho;
    private boolean fichaEntregada;
    
-    public Ficha(){
-    }
+   public Ficha(){
+   }
    
     public Ficha(int x, int y,boolean VoF){
     
@@ -66,9 +66,9 @@ public class Ficha{
      int puntos =0;
      ladoIzquierdo = 0;
      ladoDerecho = 0;
-     for(int i = 0; i < 7; ++i){
-      puntos+=ladoIzquierdo= ficha.getFicha(fichas,i).getLadoIzquierdo();
-      puntos+=ladoDerecho= ficha.getFicha(fichas,i).getLadoDerecho(); 
+     for(int i = 0; i < fichas.length; ++i){
+      puntos+=ladoIzquierdo= getFicha(fichas,i).getLadoIzquierdo();
+      puntos+=ladoDerecho= getFicha(fichas,i).getLadoDerecho(); 
     } 
        return puntos;}
 
@@ -80,21 +80,23 @@ public class Ficha{
    public boolean esValida(Ficha ficha){
    boolean es = true;
    if(ficha == null ){
-    es= false;}
+    es= false;
+    }
    return es;
    }
    
    public String comoColoco(int puedoI, int puedoD, int ultimoI, int ultimoD){
-   String lado = null;
-   if( puedoD == ultimoI){
-    lado = "i";}
-   else if( puedoI == ultimoI){ // Al devolver una -i o un -d se que la ficha se puede poner, pero que debo darle la vuelta a sus lados
-    lado="-i";}
-   else if(puedoI == ultimoD){
-    lado = "d";}
-   else if(puedoD== ultimoD){
-    lado = "-d";}
-   return lado;}
+       String lado = null;
+       if( puedoD == ultimoI){
+           lado = "i";}
+    else if( puedoI == ultimoI){ // Al devolver una -i o un -d se que la ficha se puede poner, pero que debo darle la vuelta a sus lados
+        lado="-i";
+    }
+        else if(puedoI == ultimoD){
+            lado = "d";}
+    else if(puedoD== ultimoD){
+        lado = "-d";}
+    return lado;}
    
    public boolean puedoPoner(String lado,int puedoI, int puedoD, int ultimoI, int ultimoD){
     boolean sePuede = false;
@@ -112,21 +114,18 @@ public class Ficha{
    }
    
    public String toString(){
-     return this.ladoIzquierdo + "|"+ this.ladoDerecho; }
+     return this.ladoIzquierdo + "|"+ this.ladoDerecho; 
+    }
    
    
    public String mostrarFichas(Ficha [] cuales){
     String fichas=null;
     for(int i=0; i < cuales.length; ++i){
      fichas += " " + cuales[i].toString(); }
-    System.out.println(fichas);
+    System.out.println(fichas); 
     return fichas;
    }
      
 }
-        
 
-    
-    
-    
- 
+
