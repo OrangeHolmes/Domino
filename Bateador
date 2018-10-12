@@ -11,20 +11,15 @@ public class Bateador {
     misFichas = mias;
     
     }
-  // public String dondePongo(){
-   // String lado = null;
-   // Random random = new Random();
-   // int queLado = random.nextInt(2);
-   
-  // }
-  public void noSeJugar(int posicion, Ficha[] fichasJ, int ultimoI, int ultimoD){
+
+  public void noSeJugar( Ficha[] fichasJ, int ultimoI, int ultimoD){
    Random aleatorio = new Random();
    String miParteDeLaMesa=null;
    this.misFichas = fichasJ;
    boolean puedoSeguir= false;
    int ladoI=0;
    int ladoD=0;
-   String posicion;
+   String posicion = null;
    while(puedoSeguir == false){
     int n = aleatorio.nextInt(7)+1;
     this.miFicha = miFicha.escogerFicha(fichasJ,n);
@@ -32,8 +27,9 @@ public class Bateador {
     ladoI= miFicha.getLadoIzquierdo();
     ladoD= miFicha.getLadoDerecho();
     posicion = miFicha.comoColoco(ladoI, ladoD, ultimoI, ultimoD);
-    if( lado != null){
+    if( posicion != null){
      puedoSeguir = true;}
     }
-    this.miMesa.colocarFicha(lado, ladoI, ladoD)
+    this.miTablero.colocarFicha(posicion, ladoI, ladoD);
+ }
 }
