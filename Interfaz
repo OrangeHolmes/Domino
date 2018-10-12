@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class Interfaz{
+	
+	public int escogerModalidad(){
+		Scanner entrada = new Scanner(System.in);
+		System.out.println ("Bienvenido al Juego \n Para empezar escoge la modalidad");
+		System.out.println ("1. Simple \t 2.Torneo");
+		int respuesta = entrada.nextInt();
+		return respuesta;
+	}
+	public int tipoEnfrentamiento(){
+		Scanner entrada = new Scanner(System.in);
+		System.out.println ("Ahora escoge el tipo de modo simple que quieras jugar");
+		System.out.println ("1.Usuario vs Computador \t 2.Usuario vs Usuario \t 3. Computador vs Computador");
+	  int respuesta = entrada.nextInt();
+		return respuesta;
+	}
+	public int escogerJugadorCompu(){
+		Scanner entrada = new Scanner(System.in);
+		System.out.println ("A quien te quieres enfrentar");
+		System.out.println ("1.Agresivo \t 2.Defensivo \t 3. Estratega");
+	  int respuesta = entrada.nextInt();
+		return respuesta;
+	}
+	public int escogerCompuCompu(){
+		Scanner entrada = new Scanner(System.in);
+		System.out.println ("Cuales jugadores quieres enfrentar");
+		System.out.println ("1.Agresivo vs Defensivo \t 2.Agresivo vs Estratega \t 3. Agresivo vs Agresivo \n 4.Defensivo vs Estratega \t 5. Defensivo vs Devensivo \n 6.Estratega vs Estratega");
+	  int respuesta = entrada.nextInt();
+		return respuesta;
+        }	
+	public void mostrarfichasMesa(String fichasMesatoString){
+		System.out.println (fichasMesatoString);
+	}
+	public void mostrarFichasDummy(String fichasDummytoString){
+		System.out.println (fichasDummytoString);
+	}
+	public int decidirFicha(){
+		Scanner entrada = new Scanner(System.in);
+		System.out.println ("Elige la ficha que quieras usar");
+	        int decision= entrada.nextInt();
+		return decision;
+	}
+	public String decidirDireccion(){
+		Scanner entrada = new Scanner(System.in);
+		System.out.println ("¿Quieres colocarlo a la izquierda o la derecha?\t i/d");
+	        String lado = entrada.nextLine();
+	        return lado;
+	}
+	public void mensajeDealer(String mensaje){
+		System.out.println ("");
+	}
+	
+}
