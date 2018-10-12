@@ -83,7 +83,8 @@ public class Ficha{
     es= false;}
    return es;
    }
-   public String dondePongo(int puedoI, int puedoD, int ultimoI, int ultimoD){
+   
+   public String comoColoco(int puedoI, int puedoD, int ultimoI, int ultimoD){
    String lado = null;
    if( puedoD == ultimoI){
     lado = "i";}
@@ -97,8 +98,32 @@ public class Ficha{
    System.out.println("Su ficha no se puede poner de ese lado");}
    return lado;}
    
+   public boolean puedoPoner(String lado,int puedoI, int puedoD, int ultimoI, int ultimoD){
+    boolean sePuede = false;
+    if(lado.equalsIgnoreCase("i")){
+     if(puedoI == ultimoI || puedoD == ultimoI){ 
+      sePuede = true; 
+     }
+    }
+     if(lado.equalsIgnoreCase("d")){
+     if(puedoI == ultimoI || puedoD == ultimoI){ 
+      sePuede = true; 
+     }
+    }
+    return sePuede;
+   }
+   
    public String toString(){
-     return ladoIzquierdo + "|"+ ladoDerecho; }
+     return this.ladoIzquierdo + "|"+ this.ladoDerecho; }
+   
+   
+   public String mostrarFichas(Ficha [] cuales){
+   String fichas=null;
+   for(int i=0; i < cuales.length; ++i){
+   fichas += " " + cuales[i].toString(); }
+   System.out.println(fichas);
+   return fichas;
+   }
      
 }
         
