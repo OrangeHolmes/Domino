@@ -147,31 +147,32 @@ public class EnfrentamientoSimple{
       ladoI2=0;
       ladoD2=0;
       fin = false;
-      while(fin){
+        while(fin){
       quienVa = turnoInicial();
        while( noHabemusFichas == false){
        if(quienVa == false){
          System.out.println("Turno del Jugador 1");
-         posicionFichaJ1=interfaz.decidirFicha();
-         String ladoJ1 = interfaz.decidirDireccion();
-         turnos(posicionFichaJ1,ladoJ1,this.fichasJugador1);
-         
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
          if( noHabemusFichas == true){
-          puntajeJugador1=ficha.getValor(fichasJugador2);}  
+          puntajeJugador1=ficha.getValor(fichasJugador2);
+        }  
          quienVa=true;
         if(quienVa == true){
-            posicionFichaJ2=interfaz.decidirFicha();
-            String ladoJ2 = interfaz.decidirDireccion();
-            turnos(posicionFichaJ2,ladoJ2,this.fichasJugador2);
-            ficha.noHayFichas(fichasJugador1);
+            System.out.println("Turno del Jugador 2");
             noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
             
             if( noHabemusFichas == true){
-             puntajeJugador2=ficha.getValor(fichasJugador1); }
+             puntajeJugador2=ficha.getValor(fichasJugador1);
+             
+            }
             quienVa = false;  
         }  
         }
+      if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
+       fin = true;
+      }
+    }
+  }  
       if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
        fin = true;
       }
