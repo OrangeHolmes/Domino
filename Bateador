@@ -14,16 +14,17 @@ public class Bateador {
 
   public void noSeJugar( Ficha[] fichasJ, int ultimoI, int ultimoD){
    Random aleatorio = new Random();
-   String miParteDeLaMesa=null;
    this.misFichas = fichasJ;
    boolean puedoSeguir= false;
    int ladoI=0;
    int ladoD=0;
    String posicion = null;
+   boolean fichaValida = false;
    while(puedoSeguir == false){
-    int n = aleatorio.nextInt(7)+1;
-    this.miFicha = miFicha.escogerFicha(fichasJ,n);
-    puedoSeguir= miFicha.esValida(miFicha);
+    while(fichaValida == false){
+     int n = aleatorio.nextInt(7)+1;
+     this.miFicha = miFicha.escogerFicha(fichasJ,n);
+     fichaValida= miFicha.esValida(miFicha);}
     ladoI= miFicha.getLadoIzquierdo();
     ladoD= miFicha.getLadoDerecho();
     posicion = miFicha.comoColoco(ladoI, ladoD, ultimoI, ultimoD);
