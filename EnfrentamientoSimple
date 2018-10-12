@@ -1,0 +1,197 @@
+import java.util.Random; // x aquello que se use , si no se borra
+public class EnfrentamientoSimple{
+   
+ 
+    private Dealer dealer;
+    private Ficha ficha;
+    private Ficha[] fichasTotales;
+    private Jugador jugadorDummy1;
+    private Jugador jugadorDummy2;
+    private Jugador modeloAgresivo;
+    private Jugador modeloBateador;
+    private Jugador modeloEstratega;
+    private Dummy usuario1;
+    private Dummy usuario2;
+    private Ficha fichasJugador1[]; //15 el maximo numeroo de fichas que se puede tener
+    private Ficha fichasJugador2[];
+    private Ficha fichaJ1;
+    private Ficha fichaJ2;
+    private int cantidadDeFichas = 28;
+    private int puntajeJugador1;
+    private int puntajeJugador2;
+    private int cantidadFichasInicio;
+    private int aleatorio;
+    private String tipoJugador1;
+    private String tipoJugador2; 
+    private String tablero;
+    private Interfaz interfaz;
+    private boolean quienVa;
+    private boolean turnoInicial; 
+    private int posicionFichaJ1;
+    // private int posicionFichaJ;
+    private int posicionFichaJ2;
+    private int ladoI1;
+    //private int ladoI;
+    private int ladoD1;
+    //private int ladoD;
+    private int ladoI2;
+    private int ladoD2;
+    private boolean fichasRepartidas;
+    private boolean fin;
+    private boolean noHabemusFichas;
+    private int ultimaPuestaI;
+    private int ultimaPuestaD;
+    
+    
+    public EnfrentamientoSimple(){
+        this.dealer = new Dealer();
+        this.ficha = new Ficha();
+        this.interfaz = new Interfaz();
+        this.fichasTotales = new Ficha[28];
+         for(int i = 0,j= 7,l= 13, m=18, n=22 ; i < 7; ++i, ++j,++l,++m, ++n){
+             if( i<=6){
+             fichasTotales [i] = new Ficha (0,i,false);}
+             if(j<=12){
+             fichasTotales [j] = new Ficha (1,i+1,false);}
+             if(l<=17){
+             fichasTotales [l] = new Ficha (2,i+2,false);}
+             if(m<=21){ 
+             fichasTotales [m] = new Ficha (3,i+3,false);}
+             if(n<=24){
+             fichasTotales [n] = new Ficha (4,i+4,false);}
+         }
+        fichasTotales [25] = new Ficha (5,5,false);
+        fichasTotales [26] = new Ficha (5,6,false);
+        fichasTotales [27] = new Ficha (6,6,false);
+        
+        //this.fichasJugador1 = new Ficha[15];
+        //this.fichasJugador2 = new Ficha[15];
+        //this.modeloAgresivo = new Jugador ( tipoJugador1, puntajeJugador1, fichasJugador1);
+        //this.modeloBateador = new Jugador ( tipoJugador2, puntajeJugador2, fichasJugador2);
+        //this.modeloEstratega = new Jugador ( tipoJugador3, puntajeJugador3, fichasJugador3); 
+        
+    }
+    
+    public boolean turnoInicial(){
+      boolean quienVa=false;
+     while( fichasRepartidas == false) { 
+      this.ficha.asignarFichas( this.fichasTotales, this.fichasJugador1);
+      this.ficha.asignarFichas( this.fichasTotales, this.fichasJugador2);
+          boolean turnoInicial = false;
+      int contadorFicha = 0;
+      int contadorLado = 0;
+     
+      
+       while ( turnoInicial == false){
+        
+         for(contadorFicha=0; contadorFicha < 6; contadorFicha++){
+         contadorLado = 6;
+         ladoI1= this.ficha.getFicha(this.fichasJugador1,contadorFicha).getLadoIzquierdo();
+         ladoD1= this.ficha.getFicha(this.fichasJugador1,contadorFicha).getLadoDerecho();
+         ladoI2= this.ficha.getFicha(this.fichasJugador2,contadorFicha).getLadoIzquierdo();
+         ladoD2= this.ficha.getFicha(this.fichasJugador2,contadorFicha).getLadoDerecho();
+         if( ladoI1 == contadorLado && ladoD1 == contadorLado){
+         turnoInicial = true;
+         this.tablero += " "+ ladoI1 + "|" + ladoD1;
+         }
+         else if (ladoI2 == contadorLado && ladoD2 == contadorLado){
+          turnoInicial = true;
+          quienVa = true;
+          this.tablero += " "+ ladoI2 + "|" + ladoD2;
+          }
+        
+        }    
+          
+         --contadorLado;
+         ++contadorFicha;
+         if( contadorFicha == 7){
+          turnoInicial = true; }
+        }
+        if(contadorFicha == 7){
+         fichasRepartidas=false;}
+        else {
+        fichasRepartidas=true;
+        }
+     
+     } 
+     return quienVa;
+   }
+   
+   public String turnos(int posicionFichaJ, String ladoJ, Ficha[] fichasJ){
+       int ladoI=0;
+       int ladoD=0;
+       int posicionFicha = 0;
+      ladoI= this.ficha.getFicha(fichasJ,posicionFichaJ).getLadoIzquierdo();
+      ladoD= this.ficha.getFicha(fichasJ,posicionFichaJ).getLadoDerecho();
+      if(ladoJ.equalsIgnoreCase("i")){
+        this.tablero = ladoI + "|" + ladoD + " " + tablero ;
+        interfaz.mostrarfichasMesa(tablero);
+      }
+      else{
+      this.tablero = tablero + " "+ ladoI + "|" + ladoD;
+      }
+      return this.tablero; 
+   }
+  
+   
+    public void usuario_VS_Usuario(){
+      
+      this.jugadorDummy1= new Jugador(tipoJugador1, puntajeJugador1, fichasJugador1);
+      this.jugadorDummy2= new Jugador(tipoJugador2, puntajeJugador2, fichasJugador2);
+      this.usuario1 = new Dummy(jugadorDummy1); 
+      this.usuario2 = new Dummy(jugadorDummy2);
+      this.quienVa = false;
+      this.turnoInicial= false; 
+      ladoI1=0;
+      ladoD1=0;
+      ladoI2=0;
+      ladoD2=0;
+      fin = false;
+      while(fin){
+      quienVa = turnoInicial();
+       while( noHabemusFichas == false){
+       if(quienVa == false){
+         System.out.println("Turno del Jugador 1");
+         posicionFichaJ1=interfaz.decidirFicha();
+         String ladoJ1 = interfaz.decidirDireccion();
+         this.tablero = turnos(posicionFichaJ1,ladoJ1,this.fichasJugador1);
+         
+         noHabemusFichas=this.ficha.hayFichas(fichasJugador1);
+         if( noHabemusFichas == true){
+          puntajeJugador1=ficha.getValor(fichasJugador2);}  
+         quienVa=true;
+        if(quienVa == true){
+            posicionFichaJ2=interfaz.decidirFicha();
+            String ladoJ2 = interfaz.decidirDireccion();
+            this.tablero = turnos(posicionFichaJ2,ladoJ2,this.fichasJugador2);
+            ficha.hayFichas(fichasJugador1);
+            noHabemusFichas=this.ficha.hayFichas(fichasJugador2);
+            
+            if( noHabemusFichas == true){
+             puntajeJugador2=ficha.getValor(fichasJugador1); }
+            quienVa = false;  
+        }  
+        }
+      if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
+       fin = true;
+      }
+    }
+  }   
+  // public void compu_Vs_Compu(){
+    
+ 
+  // }
+    
+   // public void usuario_VS_Compu(){
+    
+   
+       
+    
+   // } 
+    
+    
+    
+  }
+  
+    
+} 
