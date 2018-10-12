@@ -1,0 +1,20 @@
+public class Mesa{
+ private String tablero;
+ 
+ public Mesa(){}
+ 
+ public Mesa(String tablero){
+  this.tablero = tablero;
+ }
+ public void colocarFicha(String lado, int i, int d){
+  if( lado.equalsIgnoreCase("i")){
+  this.tablero = i+ d + this.tablero; }
+  if( lado.equalsIgnoreCase("d")){
+  this.tablero = this.tablero + i +d; }
+  if( lado.equalsIgnoreCase("-i")){
+  this.tablero = d + i + this.tablero; }
+  if( lado.equalsIgnoreCase("-d")){
+  this.tablero =this.tablero + i +d; ; }
+  System.out.println(this.tablero);
+ }
+}
