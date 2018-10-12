@@ -1,0 +1,11 @@
+public class Estratega {
+ 
+  private Jugador estratega;
+  private Ficha[] misFichas;
+  private Ficha miFicha;
+  
+  public Estratega (Jugador nuevo){
+    Jugador estratega = nuevo; 
+    }
+   
+ }
