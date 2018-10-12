@@ -1,0 +1,23 @@
+public class Agresivo {
+    
+  private Jugador agresivo;
+  private Ficha[] misFichas;
+  private Ficha miFicha;
+  
+  public Agresivo(Jugador nuevo){
+    Jugador agresivo = nuevo;
+    }
+  
+   
+    
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    
+}
