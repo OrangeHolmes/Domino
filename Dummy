@@ -7,7 +7,7 @@ public class Dummy {
     Jugador dummy = nuevo;
     }
     
-  public void escogerFicha(Ficha [] fichas){
+  public void horaDelDuelo(Ficha [] fichas){
    Ficha ficha = new Ficha();
    int posicionFichaJ=interfaz.decidirFicha();
    String ladoF = interfaz.decidirDireccion();
