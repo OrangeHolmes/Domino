@@ -1,14 +1,13 @@
 public class Pasivo{
-//Con una estrategia poco eficiente y hasta un poco ilógica el Pasivo tira las fichas más pequeñas de primero y se deja las más grandes.
- private Mesa miTablero;
-
+   private Jugador jugador;
+ 
    public Pasivo(){}
   
    public Pasivo(Jugador nuevo){
-     Jugador Pasivo = nuevo;
+     jugador = nuevo;
      }
     
-   public void ordenar2(Ficha [] fichas){ // Me ordena las fichas de menor a mayor.
+   public void ordenar2(Ficha [] fichas){
     int valor1 = 0;
     int valor2 = 0;
     Ficha ficha = new Ficha();
@@ -27,7 +26,7 @@ public class Pasivo{
       }
     ficha.mostrarFichas(fichas);
       }
-   public void diayDemosle( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha){
+   public void diayDemosle( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha, Mesa mesa){
     boolean puedoSeguir= false;
     int ladoI=0;
     int ladoD=0;
@@ -46,7 +45,7 @@ public class Pasivo{
     if( posicion != null){
      puedoSeguir = true;}
     }
-    this.miTablero.colocarFicha(posicion, ladoI, ladoD);
+    mesa.colocarFicha(posicion, ladoI, ladoD);
    }
   
   }
