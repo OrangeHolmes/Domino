@@ -24,7 +24,7 @@ public class Simple{
     
     public Simple(){
         this.mesa = " ";
-        this.tablero = new Mesa(mesa);
+        this.tablero = new Mesa(mesa, ultimaPuestaI, ultimaPuestaD);
         this.dealer = new Dealer();
         this.ficha = new Ficha();
         this.interfaz = new Interfaz();
@@ -81,16 +81,16 @@ public class Simple{
          if( ladoI1 == contadorLado && ladoD1 == contadorLado){
          turnoInicial = true;
          System.out.println( " "+ ladoI1 + "|" + ladoD1);
-         this.ultimaPuestaI = contadorLado;
-         this.ultimaPuestaD= contadorLado;
          this.tablero.colocarFicha("d",ultimaPuestaI, ultimaPuestaD);
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
          }
          else if (ladoI2 == contadorLado && ladoD2 == contadorLado){
           turnoInicial = true;
           quienVa = true;
-         this.ultimaPuestaI = contadorLado;
-         this.ultimaPuestaD= contadorLado;
          this.tablero.colocarFicha("d",ultimaPuestaI, ultimaPuestaD);
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
           }
         
         }    
@@ -173,7 +173,9 @@ public class Simple{
         while( noHabemusFichas == false){
          if(quienVa == false){
          System.out.println("Turno del Jugador 1");
-         //agresivo1.queEsLaVaraPapi(fichasJugador1);
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+         agresivo1.queEsLaVaraPapi(fichasJugador1,ultimaPuestaI,ultimaPuestaD, fichaJ1, tablero);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
@@ -182,8 +184,10 @@ public class Simple{
         }
         if(quienVa == true){
          System.out.println("Turno del Jugador 2");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+         pasivo2.diayDemosle(fichasJugador2,ultimaPuestaI,ultimaPuestaD, fichaJ2, tablero);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
-         //pasivo2.diayDemosle(fichasJugador2,,,fichaJ2);
          if( noHabemusFichas == true){
           puntajeJugador2=ficha.getValor(fichasJugador1);
           }
@@ -197,13 +201,15 @@ public class Simple{
         case 2:
          this.agresivo1 = new Agresivo(jugador1); 
          this.bateador2 = new Bateador(jugador2);
-          while(fin){
+        while(fin){
         quienVa = turnoInicial();
-        agresivo1.ordenar(fichasJugador1);
+        agresivo1.ordenar(fichasJugador1); 
         while( noHabemusFichas == false){
          if(quienVa == false){
          System.out.println("Turno del Jugador 1");
-         //agresivo1.queEsLaVaraPapi(fichasJugador1);
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+         agresivo1.queEsLaVaraPapi(fichasJugador1,ultimaPuestaI,ultimaPuestaD, fichaJ1, tablero);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
@@ -212,8 +218,10 @@ public class Simple{
         }
         if(quienVa == true){
          System.out.println("Turno del Jugador 2");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+         bateador2.noSeJugar(fichasJugador2,ultimaPuestaI,ultimaPuestaD, fichaJ2, tablero);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
-         //bateador.diayDemosle(fichasJugador2,,,fichaJ2);
          if( noHabemusFichas == true){
           puntajeJugador2=ficha.getValor(fichasJugador1);
           }
@@ -221,48 +229,144 @@ public class Simple{
         }  
         }
         if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
-          fin = true;   } 
-       }break;
-        case 3:
-         this.agresivo1 = new Agresivo(jugador1); 
-         this.agresivo2 = new Agresivo(jugador2);
+       fin = true;
+         } }
+       break;
+       case 3:
+        this.agresivo1 = new Agresivo(jugador1);
+        this.agresivo2 = new Agresivo(jugador2);
          while(fin){
-          quienVa = turnoInicial();
-          agresivo1.ordenar(fichasJugador1); agresivo2.ordenar(fichasJugador2);
-          while( noHabemusFichas == false){
-           if(quienVa == false){
-          System.out.println("Turno del Jugador 1");
-          //agresivo1.queEsLaVaraPapi(fichasJugador1);
-          noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
-          if( noHabemusFichas == true){
+        quienVa = turnoInicial();
+        agresivo1.ordenar(fichasJugador1); agresivo1.ordenar(fichasJugador2); 
+        while( noHabemusFichas == false){
+         if(quienVa == false){
+         System.out.println("Turno del Jugador 1");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+         agresivo1.queEsLaVaraPapi(fichasJugador1,ultimaPuestaI,ultimaPuestaD, fichaJ1, tablero);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
+         if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
          }  
          quienVa=true;
         }
         if(quienVa == true){
          System.out.println("Turno del Jugador 2");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+         agresivo2.queEsLaVaraPapi(fichasJugador2,ultimaPuestaI,ultimaPuestaD, fichaJ2, tablero);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
-         //pasivo2.diayDemosle(fichasJugador2,,,fichaJ2);
          if( noHabemusFichas == true){
           puntajeJugador2=ficha.getValor(fichasJugador1);
           }
             quienVa = false;  
         }  
         }
-       if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
-        fin = true; }}
-       break;
+        if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
+       fin = true;
+         } } break;
         case 4:
             this.pasivo1 = new Pasivo(jugador1); 
             this.bateador2 = new Bateador(jugador2);
+        while(fin){
+        quienVa = turnoInicial();
+        pasivo1.ordenar2(fichasJugador1);  
+        while( noHabemusFichas == false){
+         if(quienVa == false){
+         System.out.println("Turno del Jugador 1");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+         pasivo1.diayDemosle(fichasJugador1,ultimaPuestaI,ultimaPuestaD, fichaJ1, tablero);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
+         if( noHabemusFichas == true){
+          puntajeJugador1=ficha.getValor(fichasJugador2);
+         }  
+         quienVa=true;
+        }
+        if(quienVa == true){
+         System.out.println("Turno del Jugador 2");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+         bateador2.noSeJugar(fichasJugador2,ultimaPuestaI,ultimaPuestaD, fichaJ2, tablero);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
+         if( noHabemusFichas == true){
+          puntajeJugador2=ficha.getValor(fichasJugador1);
+          }
+            quienVa = false;  
+        }  
+        }
+        if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
+       fin = true;
+         } }
+            
             break;
         case 5:
             this.pasivo1 = new Pasivo(jugador1); 
             this.pasivo2 = new Pasivo(jugador2);
+             while(fin){
+        quienVa = turnoInicial();
+        pasivo1.ordenar2(fichasJugador1); pasivo2.ordenar2(fichasJugador2); 
+        while( noHabemusFichas == false){
+         if(quienVa == false){
+         System.out.println("Turno del Jugador 1");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+          pasivo1.diayDemosle(fichasJugador1,ultimaPuestaI,ultimaPuestaD, fichaJ1, tablero);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
+         if( noHabemusFichas == true){
+          puntajeJugador1=ficha.getValor(fichasJugador2);
+         }  
+         quienVa=true;
+        }
+        if(quienVa == true){
+         System.out.println("Turno del Jugador 2");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+          pasivo2.diayDemosle(fichasJugador2,ultimaPuestaI,ultimaPuestaD, fichaJ2, tablero);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
+         if( noHabemusFichas == true){
+          puntajeJugador2=ficha.getValor(fichasJugador1);
+          }
+            quienVa = false;  
+        }  
+        }
+        if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
+       fin = true;
+         } }
             break;
         case 6:
             this.bateador1 = new Bateador(jugador1); 
             this.bateador2 = new Bateador(jugador2);
+             while(fin){
+        quienVa = turnoInicial();
+        agresivo1.ordenar(fichasJugador1); 
+        while( noHabemusFichas == false){
+         if(quienVa == false){
+         System.out.println("Turno del Jugador 1");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+          bateador1.noSeJugar(fichasJugador1,ultimaPuestaI,ultimaPuestaD, fichaJ1, tablero);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
+         if( noHabemusFichas == true){
+          puntajeJugador1=ficha.getValor(fichasJugador2);
+         }  
+         quienVa=true;
+        }
+        if(quienVa == true){
+         System.out.println("Turno del Jugador 2");
+         this.ultimaPuestaI = tablero.getLadoI();
+         this.ultimaPuestaD= tablero.getLadoD();
+         bateador2.noSeJugar(fichasJugador2,ultimaPuestaI,ultimaPuestaD, fichaJ2, tablero);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
+         if( noHabemusFichas == true){
+          puntajeJugador2=ficha.getValor(fichasJugador1);
+          }
+            quienVa = false;  
+        }  
+        }
+        if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
+       fin = true;
+         } }
             break;
     }
       
@@ -297,8 +401,11 @@ public class Simple{
         }
        if(quienVa == true){
             System.out.println("Turno del Jugador 2");
+             this.ultimaPuestaI = tablero.getLadoI();
+            this.ultimaPuestaD= tablero.getLadoD();
+            agresivo1.queEsLaVaraPapi(fichasJugador2,ultimaPuestaI,ultimaPuestaD, fichaJ2, tablero);
+           
             noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
-            //agresivo1.queEsLaVaraPapi(fichasJugador2,,,fichaJ2);
             if( noHabemusFichas == true){
              puntajeJugador2=ficha.getValor(fichasJugador1);
             }
@@ -327,8 +434,12 @@ public class Simple{
         }
        if(quienVa == true){
             System.out.println("Turno del Jugador 2");
+              System.out.println("Turno del Jugador 2");
+             this.ultimaPuestaI = tablero.getLadoI();
+            this.ultimaPuestaD= tablero.getLadoD();
+            pasivo1.diayDemosle(fichasJugador2,ultimaPuestaI,ultimaPuestaD, fichaJ2, tablero);
             noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
-            //agresivo1.diayDemosle(fichasJugador2,,,fichaJ2);
+           
             if( noHabemusFichas == true){
              puntajeJugador2=ficha.getValor(fichasJugador1);
             }
@@ -356,8 +467,11 @@ public class Simple{
         }
        if(quienVa == true){
             System.out.println("Turno del Jugador 2");
+              System.out.println("Turno del Jugador 2");
+             this.ultimaPuestaI = tablero.getLadoI();
+            this.ultimaPuestaD= tablero.getLadoD();
+            bateador1.noSeJugar(fichasJugador2,ultimaPuestaI,ultimaPuestaD, fichaJ2, tablero);
             noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
-            //bateador1.esHoraDelDuelo(fichasJugador2,,,fichaJ2);
             if( noHabemusFichas == true){
              puntajeJugador2=ficha.getValor(fichasJugador1);
             }
