@@ -8,7 +8,7 @@ public class Pasivo{
      Jugador Pasivo = nuevo;
      }
     
-   public void ordenar2(Ficha [] fichas){
+   public void ordenar2(Ficha [] fichas){ // Me ordena las fichas de menor a mayor.
     int valor1 = 0;
     int valor2 = 0;
     Ficha ficha = new Ficha();
