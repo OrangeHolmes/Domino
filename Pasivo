@@ -36,7 +36,7 @@ public class Pasivo{
     boolean fichaValida = false;
     while(puedoSeguir == false){
     while(fichaValida == false){
-     miFicha = miFicha.escogerFicha(fichasJ,cualSaco);
+     miFicha = miFicha.getFicha(fichasJ,cualSaco);
      fichaValida= miFicha.esValida(miFicha);
      if(fichaValida == false) {
       cualSaco +=1;}}
