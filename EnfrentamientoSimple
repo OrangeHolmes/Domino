@@ -3,44 +3,16 @@ public class EnfrentamientoSimple{
    
  
     private Dealer dealer;
-    private Ficha ficha;
-    private Ficha[] fichasTotales;
-    private Jugador jugadorDummy1;
-    private Jugador jugadorDummy2;
-    private Jugador modeloAgresivo;
-    private Jugador modeloBateador;
-    private Jugador modeloEstratega;
-    private Dummy usuario1;
-    private Dummy usuario2;
-    private Ficha fichasJugador1[]; //15 el maximo numeroo de fichas que se puede tener
-    private Ficha fichasJugador2[];
-    private Ficha fichaJ1;
-    private Ficha fichaJ2;
-    private int cantidadDeFichas = 28;
-    private int puntajeJugador1;
-    private int puntajeJugador2;
-    private int cantidadFichasInicio;
-    private int aleatorio;
-    private String tipoJugador1;
-    private String tipoJugador2; 
-    private String tablero;
     private Interfaz interfaz;
-    private boolean quienVa;
-    private boolean turnoInicial; 
-    private int posicionFichaJ1;
-    // private int posicionFichaJ;
-    private int posicionFichaJ2;
-    private int ladoI1;
-    //private int ladoI;
-    private int ladoD1;
-    //private int ladoD;
-    private int ladoI2;
-    private int ladoD2;
-    private boolean fichasRepartidas;
-    private boolean fin;
-    private boolean noHabemusFichas;
-    private int ultimaPuestaI;
-    private int ultimaPuestaD;
+    private Ficha ficha, fichaJ1, fichaJ2;
+    private Ficha[] fichasTotales;
+    private Ficha fichasJugador1[], fichasJugador2[]; //15 el maximo numeroo de fichas que se puede tener
+    private Jugador jugadorDummy1, jugadorDummy2, modeloAgresivo,  modeloBateador, modeloEstratega;
+    private Dummy usuario1, usuario2;
+    private int cantidadDeFichas = 28;
+    private int puntajeJugador1, puntajeJugador2, cantidadFichasInicio, aleatorio, posicionFichaJ1, posicionFichaJ2;
+    private int ladoD1, ladoI1, ladoD2, ladoI2, ultimaPuestaI, ultimaPuestaD;
+    private String tipoJugador1, tipoJugador2, tablero;
     
     
     public EnfrentamientoSimple(){
