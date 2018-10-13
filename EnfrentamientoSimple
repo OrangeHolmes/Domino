@@ -162,7 +162,7 @@ public class EnfrentamientoSimple{
             this.pasivo2 = new Pasivo(jugador2);
             break;
         case 6:
-            this.agresivo1 = new Bateador(jugador1); 
+            this.agresivo1 = new Agresivo(jugador1); 
             this.bateador2 = new Bateador(jugador2);
             break;
     }
@@ -251,4 +251,3 @@ public class EnfrentamientoSimple{
     }
   } 
  }
-
