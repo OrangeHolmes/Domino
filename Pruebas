@@ -1,9 +1,10 @@
-Public class Pruebas{
+public class Pruebas{
 private Ficha[] fichasTotales;
 private Ficha[] fichas;
 
+
 public Pruebas(){
-this.fichasTotales = new Ficha[28];
+    this.fichasTotales = new Ficha[28];
          for(int i = 0,j= 7,l= 13, m=18, n=22 ; i < 7; ++i, ++j,++l,++m, ++n){
              if( i<=6){
              fichasTotales [i] = new Ficha (0,i);}
@@ -19,15 +20,16 @@ this.fichasTotales = new Ficha[28];
         fichasTotales [25] = new Ficha (5,5);
         fichasTotales [26] = new Ficha (5,6);
         fichasTotales [27] = new Ficha (6,6);
-this.fichas = new Ficha[15];
-         for(int i = 0,j= 7,l= 13, m=18, n=22 ; i < 7; ++i, ++j,++l,++m, ++n){
+ 
+        this.fichas = new Ficha[15];
+         for(int i = 0,j= 7,l= 13; i < 7; ++i, ++j,++l){
              if( i<=6){
-             fichasTotales [i] = new Ficha (4,i);}
+             fichas [i] = new Ficha (4,i);}
              if(j<=12){
-             fichasTotales [j] = new Ficha (5,i+1);}
-             if(l<15){
-             fichasTotales [l] = new Ficha (8,i+2);}
+             fichas [j] = new Ficha (5,i+1);}
          } 
          }
- public void prueba1(){}      
-}
+ public void prueba1(){
+  int lado = 0;
+  String l = fichasTotales[1].mostrarFichas(fichasTotales);
+  String a = fichasTotales[1].mostrarFichas(fichas); }
