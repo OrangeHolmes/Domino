@@ -50,7 +50,7 @@ public class Ficha{
    
    public boolean noHayFichas(Ficha[] fichas){
    // Me revisa si hay fichas en un vector.
-    boolean quedan= true;
+    boolean quedan = false;
     int conteo = 0;
     Ficha ficha = new Ficha();
      for(int i =0; i<fichas.length; ++i){
@@ -63,7 +63,7 @@ public class Ficha{
      return quedan ;
    }
    
-    public int getValor(Ficha[] fichas){
+   public int getValor(Ficha[] fichas){
    // Me obtiene el valor total de un conjunto de fichas.
      Ficha ficha = new Ficha();
      int puntos = 0;
@@ -122,7 +122,7 @@ public class Ficha{
     }
    
    
-  public String mostrarFichas(Ficha [] cuales){
+   public String mostrarFichas(Ficha [] cuales){
    // Me muestra todas las fichas de un vector.
     String fichas=" ";
     for(int i=0; i < cuales.length; ++i){
@@ -132,6 +132,7 @@ public class Ficha{
     System.out.println(fichas); 
     return fichas;
    }
+     
 }
 
 
