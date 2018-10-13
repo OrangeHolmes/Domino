@@ -1,0 +1,33 @@
+Public class Pruebas{
+private Ficha[] fichasTotales;
+private Ficha[] fichas;
+
+public Pruebas(){
+this.fichasTotales = new Ficha[28];
+         for(int i = 0,j= 7,l= 13, m=18, n=22 ; i < 7; ++i, ++j,++l,++m, ++n){
+             if( i<=6){
+             fichasTotales [i] = new Ficha (0,i);}
+             if(j<=12){
+             fichasTotales [j] = new Ficha (1,i+1);}
+             if(l<=17){
+             fichasTotales [l] = new Ficha (2,i+2);}
+             if(m<=21){ 
+             fichasTotales [m] = new Ficha (3,i+3);}
+             if(n<=24){
+             fichasTotales [n] = new Ficha (4,i+4);}
+         }
+        fichasTotales [25] = new Ficha (5,5);
+        fichasTotales [26] = new Ficha (5,6);
+        fichasTotales [27] = new Ficha (6,6);
+this.fichas = new Ficha[15];
+         for(int i = 0,j= 7,l= 13, m=18, n=22 ; i < 7; ++i, ++j,++l,++m, ++n){
+             if( i<=6){
+             fichasTotales [i] = new Ficha (4,i);}
+             if(j<=12){
+             fichasTotales [j] = new Ficha (5,i+1);}
+             if(l<15){
+             fichasTotales [l] = new Ficha (8,i+2);}
+         } 
+         }
+ public void prueba1(){}      
+}
