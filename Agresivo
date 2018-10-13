@@ -36,7 +36,7 @@
     while(puedoSeguir == false){
     while(fichaValida == false){
     //Este while anidado lo que hace es verificarme que la ficha escogida no tenga valor null.
-     miFicha = miFicha.escogerFicha(fichasJ,cualSaco);
+     miFicha = miFicha.getFicha(fichasJ,cualSaco);
      fichaValida= miFicha.esValida(miFicha);
      if(fichaValida == false) {
       cualSaco +=1;}}
