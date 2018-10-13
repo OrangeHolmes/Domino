@@ -71,12 +71,12 @@ public class EnfrentamientoSimple{
          ladoD2= this.ficha.getFicha(this.fichasJugador2,contadorFicha).getLadoDerecho();
          if( ladoI1 == contadorLado && ladoD1 == contadorLado){
          turnoInicial = true;
-        // this.tablero += " "+ ladoI1 + "|" + ladoD1;
+         System.out.println( " "+ ladoI1 + "|" + ladoD1);
          }
          else if (ladoI2 == contadorLado && ladoD2 == contadorLado){
           turnoInicial = true;
           quienVa = true;
-          //this.tablero += " "+ ladoI2 + "|" + ladoD2;
+          System.out.println( " "+ ladoI2 + "|" + ladoD2);
           }
         
         }    
