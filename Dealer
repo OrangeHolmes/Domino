@@ -1,6 +1,7 @@
+  
 public class Dealer{
  
-    
+    private Interfaz interfaz;
     Ficha[] fichasRestantes = new Ficha[14];
     private Ficha ficha = new Ficha();
     private Jugador jugador = new Jugador();
@@ -10,7 +11,7 @@ public class Dealer{
     int x = (int) Math.random() * fichasRestantes.length;
     
     public Dealer(){
-        Dealer dealer = new Dealer();
+
     }
     
     public boolean tomarDecision(Ficha fichaSiguiente, Ficha[] fichasRestantes, boolean turno){
@@ -23,19 +24,7 @@ public class Dealer{
         }
           return reparte;                                              //PREGUNTAR!!!
     }
-    
-    public boolean gano(Jugador jugador2){
-       boolean ganoJ1 = false;
-       if(getCantcartas(jugador1) = 0){
-           ganoJ1 = true;
-        }
-       if(getCantCartas(jugador2) != 0){
-           if(getPuntosJ1(jugador.getFichas()) > getPuntosJ2(jugador.getFichas)){
-                   ganoJ1 = true;
-                }
-           }
-       return ganoJ1;
-   }
+  
    public int getPuntosGanador(Ficha[] fRestantesJ1, Ficha[] fRestantesJ2){
         int puntosJ1 = ficha.getValor(fRestantesJ1);
         int puntosJ2 = ficha.getValor(fRestantesJ2);
@@ -48,22 +37,13 @@ public class Dealer{
         }
             return puntosGanador;
         }
-   public void repartir(){
-        
-        }  
+   
+   public void quienGano(int puntajeJ1, int puntajeJ2){
+     if(puntajeJ1>=100){
+     interfaz.mensajeDealer("Gana el jugador 1");
     }
-        
-        
-        
-        
-        
-        //getpuntos ficha.getValor()
-    
-    
-    
-   // public int getPuntosJ2(){
-    //getpuntos ficha.getValor()
-    
-    
-
-
+    if(puntajeJ2>=100){
+     interfaz.mensajeDealer("Gana el jugador 2");
+    }
+    }
+}
