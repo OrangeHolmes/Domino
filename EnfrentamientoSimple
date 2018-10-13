@@ -2,7 +2,7 @@ import java.util.Random; // x aquello que se use , si no se borra
 public class EnfrentamientoSimple{
    
  
-    private Dealer dealer;
+      private Dealer dealer;
     private Interfaz interfaz;
     private Ficha ficha, fichaJ1, fichaJ2;
     private Ficha[] fichasTotales;
@@ -20,10 +20,12 @@ public class EnfrentamientoSimple{
     private Mesa tablero;
     
     
-    public EnfrentamientoSimple(){
+    public Simple(){
         this.dealer = new Dealer();
         this.ficha = new Ficha();
         this.interfaz = new Interfaz();
+        fichasJugador1 = new Ficha[15];
+        fichasJugador2 = new Ficha[15];
         this.jugador1= new Jugador(tipoJugador1, puntajeJugador1, fichasJugador1);
         this.jugador2= new Jugador(tipoJugador2, puntajeJugador2, fichasJugador2);
         this.fichasTotales = new Ficha[28];
@@ -51,7 +53,7 @@ public class EnfrentamientoSimple{
         
     }
     
-    public boolean turnoInicial(){
+    private boolean turnoInicial(){
       boolean quienVa=false;
      while( quienVa == false) { 
       this.ficha.asignarFichas( this.fichasTotales, this.fichasJugador1);
@@ -70,8 +72,8 @@ public class EnfrentamientoSimple{
          ladoI2= this.ficha.getFicha(this.fichasJugador2,contadorFicha).getLadoIzquierdo();
          ladoD2= this.ficha.getFicha(this.fichasJugador2,contadorFicha).getLadoDerecho();
          if( ladoI1 == contadorLado && ladoD1 == contadorLado){
-          turnoInicial = true;
-          System.out.println( " "+ ladoI1 + "|" + ladoD1);
+         turnoInicial = true;
+         System.out.println( " "+ ladoI1 + "|" + ladoD1);
          }
          else if (ladoI2 == contadorLado && ladoD2 == contadorLado){
           turnoInicial = true;
@@ -84,8 +86,7 @@ public class EnfrentamientoSimple{
          --contadorLado;
          ++contadorFicha;
          if( contadorFicha == 7){
-          turnoInicial = true;
-        }
+          turnoInicial = true; }
         }
         if(contadorFicha == 7){
          quienVa=false;}
@@ -120,8 +121,7 @@ public class EnfrentamientoSimple{
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
         }  
-         quienVa=true;
-        }
+         quienVa=true;}
         if(quienVa == true){
             System.out.println("Turno del Jugador 2");
             noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
@@ -136,7 +136,7 @@ public class EnfrentamientoSimple{
        fin = true;
       }
     }
-  } 
+  }
    public void compu_Vs_Compu(){
     int tipoJuegoEscogido = interfaz.escogerCompuCompu();
       
