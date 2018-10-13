@@ -1,0 +1,52 @@
+public class Pasivo{
+private Mesa miTablero;
+ 
+   public Agresivo(){}
+  
+   public Agresivo(Jugador nuevo){
+     Jugador agresivo = nuevo;
+     }
+    
+   public void ordenar2(Ficha [] fichas){
+    int valor1 = 0;
+    int valor2 = 0;
+    Ficha ficha = new Ficha();
+    for(int i=0; i <fichas.length-1; ++i){
+     for(int j = 0; j < fichas.length-i-1;++j){
+      valor1+=fichas[j].getLadoIzquierdo();
+      valor1+= fichas[j].getLadoDerecho();
+      valor2+=fichas[j+1].getLadoIzquierdo();
+      valor2+= fichas[j+1].getLadoDerecho();
+      if(valor2 > valor1){
+       Ficha tmp = fichas[j];
+       fichas[j] = fichas[j+1];
+       fichas[j+1] = tmp;} 
+      }
+      }
+    ficha.mostrarFichas(fichas);
+      }
+   public void queEsLaVaraPapi( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha){
+    boolean puedoSeguir= false;
+    int ladoI=0;
+    int ladoD=0;
+    int cualSaco = 0;
+    String posicion = null;
+    boolean fichaValida = false;
+    while(puedoSeguir == false){
+    while(fichaValida == false){
+     miFicha = miFicha.escogerFicha(fichasJ,cualSaco);
+     fichaValida= miFicha.esValida(miFicha);
+     if(fichaValida == false) {
+      cualSaco +=1;}}
+    ladoI= miFicha.getLadoIzquierdo();
+    ladoD= miFicha.getLadoDerecho();
+    posicion = miFicha.comoColoco(ladoI, ladoD, ultimoI, ultimoD);
+    if( posicion != null){
+     puedoSeguir = true;}
+    }
+    this.miTablero.colocarFicha(posicion, ladoI, ladoD);
+   }
+  
+  }
+
+  
