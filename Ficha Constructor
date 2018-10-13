@@ -6,36 +6,41 @@ public class Ficha{
    private boolean fichaEntregada;
    
    public Ficha(){
-   }
+   } //Constructor por omisión.
    
     public Ficha(int x, int y,boolean VoF){
-    
+    //Constructor con parametros.
     fichaEntregada = VoF;
     ladoIzquierdo = x;
     ladoDerecho = y ;
    }
     
     public boolean isFichaEntregada(){
+    //Si la ficha ya está entregada a un Jugador me devuelve verdadero.
       return fichaEntregada;
     }
     public void setFichaEntregada(boolean fichaEntregada){
+    // Me permite cambiar si una ficha está entregada o no.
             this.fichaEntregada = fichaEntregada;
         }
         
     public int getLadoIzquierdo(){
+    // Me permite obtener el entero del lado izquierdo de la ficha.
         return ladoIzquierdo;
     }
     
     public int getLadoDerecho(){
+     // Me permite obtener el entero del lado derecho de la ficha.
         return ladoDerecho;
     }
    
     public  Ficha getFicha(Ficha[] vector,int posicion) {
-      
+    // Me permite obtener una ficha de un vector de fichas.   
       return vector[posicion];    
       }
       
     public Ficha[] asignarFichas(Ficha [] fichasRecibidas, Ficha [] fichasEntregadas){
+    // Me reparte fichas de un vector a otro.
       Random random = new Random();
       int cantidadDeFichas= 28;
       int cantidadFichasInicio = 7;
@@ -54,20 +59,22 @@ public class Ficha{
    }
    
    public boolean noHayFichas(Ficha[] fichas){
+   // Me revisa si hay fichas en un vector.
     boolean quedan= true;
     int conteo = 0;
     Ficha ficha = new Ficha();
-     for(int i =0; i<7; ++i){
+     for(int i =0; i<fichas.length; ++i){
      ficha = getFicha(fichas,i);
      if(ficha == null){
       ++conteo;  }
     }
-     if( conteo == 7){
+     if( conteo == fichas.length){
       quedan = true;}
      return quedan ;
    }
    
    public int getValor(Ficha[] fichas){
+   // Me obtiene el valor total de un conjunto de fichas.
      Ficha ficha = new Ficha();
      int puntos =0;
      ladoIzquierdo = 0;
@@ -76,14 +83,10 @@ public class Ficha{
       puntos+=ladoIzquierdo= getFicha(fichas,i).getLadoIzquierdo();
       puntos+=ladoDerecho= getFicha(fichas,i).getLadoDerecho(); 
     } 
-       return puntos;}
-
-   public Ficha escogerFicha(Ficha[] fichas,int n){
-    Ficha miFicha = new Ficha();
-    miFicha = fichas[n];
-    return miFicha; }
+       return puntos; }
    
    public boolean esValida(Ficha ficha){
+   // Me deja revisar si en un vector de fichas , hay una ficha o un valor nulo.
    boolean es = true;
    if(ficha == null ){
     es= false;
@@ -92,7 +95,8 @@ public class Ficha{
    }
    
    public String comoColoco(int puedoI, int puedoD, int ultimoI, int ultimoD){
-       String lado = null;
+     // Me permite ver de que forma exacta se puede poner la ficha.
+      String lado = null;
        if( puedoD == ultimoI){
            lado = "i";}
     else if( puedoI == ultimoI){ // Al devolver una -i o un -d se que la ficha se puede poner, pero que debo darle la vuelta a sus lados
@@ -105,6 +109,7 @@ public class Ficha{
     return lado;}
    
    public boolean puedoPoner(String lado,int puedoI, int puedoD, int ultimoI, int ultimoD){
+   //Me dice si la ficha se puede poner en un lado del tablero o no.
     boolean sePuede = false;
     if(lado.equalsIgnoreCase("i")){
      if(puedoI == ultimoI || puedoD == ultimoI){ 
@@ -125,6 +130,7 @@ public class Ficha{
    
    
    public String mostrarFichas(Ficha [] cuales){
+   // Me muestra todas las fichas de un vector.
     String fichas=null;
     for(int i=0; i < cuales.length; ++i){
      fichas += " " + cuales[i].toString(); }
