@@ -7,18 +7,24 @@ public class EnfrentamientoSimple{
     private Ficha ficha, fichaJ1, fichaJ2;
     private Ficha[] fichasTotales;
     private Ficha fichasJugador1[], fichasJugador2[]; //15 el maximo numeroo de fichas que se puede tener
-    private Jugador jugadorDummy1, jugadorDummy2, modeloAgresivo,  modeloBateador, modeloEstratega;
+    private Jugador jugador1, jugador2;
     private Dummy usuario1, usuario2;
+    private Agresivo agresivo1, agresivo2;
+    private Pasivo pasivo1, pasivo2;
+    private Bateador bateador1, bateador2;
     private int cantidadDeFichas = 28;
     private int puntajeJugador1, puntajeJugador2, cantidadFichasInicio, aleatorio, posicionFichaJ1, posicionFichaJ2;
     private int ladoD1, ladoI1, ladoD2, ladoI2, ultimaPuestaI, ultimaPuestaD;
-    private String tipoJugador1, tipoJugador2, tablero;
+    private String tipoJugador1, tipoJugador2;
+    private Mesa tablero;
     
     
     public EnfrentamientoSimple(){
         this.dealer = new Dealer();
         this.ficha = new Ficha();
         this.interfaz = new Interfaz();
+        this.jugador1= new Jugador(tipoJugador1, puntajeJugador1, fichasJugador1);
+        this.jugador2= new Jugador(tipoJugador2, puntajeJugador2, fichasJugador2);
         this.fichasTotales = new Ficha[28];
          for(int i = 0,j= 7,l= 13, m=18, n=22 ; i < 7; ++i, ++j,++l,++m, ++n){
              if( i<=6){
@@ -46,7 +52,7 @@ public class EnfrentamientoSimple{
     
     public boolean turnoInicial(){
       boolean quienVa=false;
-     while( fichasRepartidas == false) { 
+     while( quienVa == false) { 
       this.ficha.asignarFichas( this.fichasTotales, this.fichasJugador1);
       this.ficha.asignarFichas( this.fichasTotales, this.fichasJugador2);
           boolean turnoInicial = false;
@@ -80,9 +86,9 @@ public class EnfrentamientoSimple{
           turnoInicial = true; }
         }
         if(contadorFicha == 7){
-         fichasRepartidas=false;}
+         quienVa=false;}
         else {
-        fichasRepartidas=true;
+        quienVa=true;
         }
      
      } 
@@ -92,10 +98,9 @@ public class EnfrentamientoSimple{
    
     public void usuario_VS_Usuario(){
       
-      this.jugadorDummy1= new Jugador(tipoJugador1, puntajeJugador1, fichasJugador1);
-      this.jugadorDummy2= new Jugador(tipoJugador2, puntajeJugador2, fichasJugador2);
-      this.usuario1 = new Dummy(jugadorDummy1); 
-      this.usuario2 = new Dummy(jugadorDummy2);
+      
+      this.usuario1 = new Dummy(jugador1); 
+      this.usuario2 = new Dummy(jugador2);
       this.quienVa = false;
       this.turnoInicial= false; 
       ladoI1=0;
@@ -113,7 +118,7 @@ public class EnfrentamientoSimple{
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
         }  
-         quienVa=true;
+         quienVa=true;}
         if(quienVa == true){
             System.out.println("Turno del Jugador 2");
             noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
@@ -129,11 +134,9 @@ public class EnfrentamientoSimple{
       }
     }
   } 
-      if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
-       fin = true;
-      }
-    }
-  }   
+  
+ }
+  
   // public void compu_Vs_Compu(){
     
  
@@ -148,7 +151,3 @@ public class EnfrentamientoSimple{
     
     
     
-  }
-  
-    
-} 
