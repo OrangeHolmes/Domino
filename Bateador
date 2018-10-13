@@ -1,19 +1,17 @@
 import java.util.Random;
 public class Bateador {
-// Este jugador usa una tecnica poco eficiente ya que no sabe jugar entonces solo me coloca una ficha siempre y cuando pueda ponerse.  
-  private Jugador bateador;
-  private Ficha[] misFichas;
-  private Ficha miFicha;
-  private Mesa miTablero;
+    
+  private Jugador jugador;
  
   public Bateador(Jugador nuevo){
-    bateador= nuevo; 
+    jugador= nuevo; 
+    // misFichas = mias;
+    
     }
 
-  public void noSeJugar( Ficha[] fichasJ, int ultimoI, int ultimoD){
-  // El metodo escoge una ficha al azar de su pila propia de fichas, y si es valida la pone.
+  public void noSeJugar( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha, Mesa mesa){
    Random aleatorio = new Random();
-   this.misFichas = fichasJ;
+   //this.misFichas = fichasJ;
    boolean puedoSeguir= false;
    int ladoI=0;
    int ladoD=0;
@@ -22,7 +20,7 @@ public class Bateador {
    while(puedoSeguir == false){
     while(fichaValida == false){
      int n = aleatorio.nextInt(7)+1;
-     this.miFicha = miFicha.getFicha(fichasJ,n);
+     miFicha = miFicha.getFicha(fichasJ,n);
      fichaValida= miFicha.esValida(miFicha);}
     ladoI= miFicha.getLadoIzquierdo();
     ladoD= miFicha.getLadoDerecho();
@@ -30,6 +28,6 @@ public class Bateador {
     if( posicion != null){
      puedoSeguir = true;}
     }
-    this.miTablero.colocarFicha(posicion, ladoI, ladoD);
+    mesa.colocarFicha(posicion, ladoI, ladoD);
  }
 }
