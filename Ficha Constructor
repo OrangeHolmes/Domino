@@ -119,15 +119,16 @@ public class Ficha{
     }
    
    
-   public String mostrarFichas(Ficha [] cuales){
+  public String mostrarFichas(Ficha [] cuales){
    // Me muestra todas las fichas de un vector.
-    String fichas=null;
+    String fichas=" ";
     for(int i=0; i < cuales.length; ++i){
-     fichas += " " + cuales[i].toString(); }
+     if(cuales[i] == null){
+        fichas += " Vacio";}
+     else{fichas += " " + cuales[i].toString(); }}
     System.out.println(fichas); 
     return fichas;
    }
-     
 }
 
 
