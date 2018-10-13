@@ -1,10 +1,10 @@
 public class Pasivo{
-private Mesa miTablero;
+ private Mesa miTablero;
  
-   public Agresivo(){}
+   public Pasivo(){}
   
-   public Agresivo(Jugador nuevo){
-     Jugador agresivo = nuevo;
+   public Pasivo(Jugador nuevo){
+     Jugador Pasivo = nuevo;
      }
     
    public void ordenar2(Ficha [] fichas){
