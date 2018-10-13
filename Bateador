@@ -22,7 +22,7 @@ public class Bateador {
    while(puedoSeguir == false){
     while(fichaValida == false){
      int n = aleatorio.nextInt(7)+1;
-     this.miFicha = miFicha.escogerFicha(fichasJ,n);
+     this.miFicha = miFicha.getFicha(fichasJ,n);
      fichaValida= miFicha.esValida(miFicha);}
     ladoI= miFicha.getLadoIzquierdo();
     ladoD= miFicha.getLadoDerecho();
