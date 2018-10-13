@@ -1,6 +1,6 @@
 import java.util.Random;
 public class Bateador {
-    
+// Este jugador usa una tecnica poco eficiente ya que no sabe jugar entonces solo me coloca una ficha siempre y cuando pueda ponerse.  
   private Jugador bateador;
   private Ficha[] misFichas;
   private Ficha miFicha;
@@ -11,6 +11,7 @@ public class Bateador {
     }
 
   public void noSeJugar( Ficha[] fichasJ, int ultimoI, int ultimoD){
+  // El metodo escoge una ficha al azar de su pila propia de fichas, y si es valida la pone.
    Random aleatorio = new Random();
    this.misFichas = fichasJ;
    boolean puedoSeguir= false;
