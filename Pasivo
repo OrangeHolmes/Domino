@@ -1,6 +1,7 @@
 public class Pasivo{
+//Con una estrategia poco eficiente y hasta un poco ilógica el Pasivo tira las fichas más pequeñas de primero y se deja las más grandes.
  private Mesa miTablero;
- 
+
    public Pasivo(){}
   
    public Pasivo(Jugador nuevo){
