@@ -1,4 +1,5 @@
  public class Agresivo {
+ // El nombre corresponde debido a que su metodo de juego es ir colocando las fichas que tengan el valor más grande.
    private Mesa miTablero;
  
    public Agresivo(){}
@@ -7,7 +8,7 @@
      Jugador agresivo = nuevo;
      }
     
-   public void ordenar2(Ficha [] fichas){
+   public void ordenar(Ficha [] fichas){ // el método ordena las fichas del jugador de mayor a menor
     int valor1 = 0;
     int valor2 = 0;
     Ficha ficha = new Ficha();
@@ -34,6 +35,7 @@
     boolean fichaValida = false;
     while(puedoSeguir == false){
     while(fichaValida == false){
+    //Este while anidado lo que hace es verificarme que la ficha escogida no tenga valor null.
      miFicha = miFicha.escogerFicha(fichasJ,cualSaco);
      fichaValida= miFicha.esValida(miFicha);
      if(fichaValida == false) {
@@ -41,10 +43,13 @@
     ladoI= miFicha.getLadoIzquierdo();
     ladoD= miFicha.getLadoDerecho();
     posicion = miFicha.comoColoco(ladoI, ladoD, ultimoI, ultimoD);
+    // posicion me devuelve un String que si es un valor valido entonces me permite salir del ciclo , cambiando el valor de puedoSeguir en el if
+    // si posicion devuelve null el ciclo vuelve a ejecutarse.
     if( posicion != null){
      puedoSeguir = true;}
     }
     this.miTablero.colocarFicha(posicion, ladoI, ladoD);
+    // Aquí se llama al metodo tablero de la clase Mesa que me permite colocar la ficha.
    }
   
   }
