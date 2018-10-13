@@ -1,14 +1,13 @@
- public class Agresivo {
- // El nombre corresponde debido a que su metodo de juego es ir colocando las fichas que tengan el valor más grande.
-   private Mesa miTablero;
- 
+  public class Agresivo {
+   private Jugador jugador;
+   
    public Agresivo(){}
   
    public Agresivo(Jugador nuevo){
-     Jugador agresivo = nuevo;
+     this.jugador = nuevo;
      }
     
-   public void ordenar(Ficha [] fichas){ // el método ordena las fichas del jugador de mayor a menor
+   public void ordenar(Ficha [] fichas){
     int valor1 = 0;
     int valor2 = 0;
     Ficha ficha = new Ficha();
@@ -26,16 +25,18 @@
       }
     ficha.mostrarFichas(fichas);
       }
-   public void queEsLaVaraPapi( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha){
+   public void queEsLaVaraPapi( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha, Mesa mesa){
     boolean puedoSeguir= false;
     int ladoI=0;
     int ladoD=0;
     int cualSaco = 0;
     String posicion = null;
     boolean fichaValida = false;
-    while(puedoSeguir == false){
+    boolean misFichasSonValidas;
+    int tengoFichas =0;
+    int donde =0; // en caso de que sus fichas no sirvan para jugarlas , donde me dice que espacio del vector de fichas es nulo , para así poder guardar una ficha nueva.
+    while(puedoSeguir == false ){//|| tengoFichas != fichasJ.length){
     while(fichaValida == false){
-    //Este while anidado lo que hace es verificarme que la ficha escogida no tenga valor null.
      miFicha = miFicha.getFicha(fichasJ,cualSaco);
      fichaValida= miFicha.esValida(miFicha);
      if(fichaValida == false) {
@@ -43,15 +44,16 @@
     ladoI= miFicha.getLadoIzquierdo();
     ladoD= miFicha.getLadoDerecho();
     posicion = miFicha.comoColoco(ladoI, ladoD, ultimoI, ultimoD);
-    // posicion me devuelve un String que si es un valor valido entonces me permite salir del ciclo , cambiando el valor de puedoSeguir en el if
-    // si posicion devuelve null el ciclo vuelve a ejecutarse.
     if( posicion != null){
      puedoSeguir = true;}
+    //++tengoFichas;
     }
-    this.miTablero.colocarFicha(posicion, ladoI, ladoD);
-    // Aquí se llama al metodo tablero de la clase Mesa que me permite colocar la ficha.
+    mesa.colocarFicha(posicion, ladoI, ladoD);
    }
   
   }
-
+  
+   
+   
+   
   
