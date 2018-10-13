@@ -1,0 +1,54 @@
+public class Juego{
+    private Interfaz interfaz;
+    private Simple simple;
+    private Ficha ficha;
+    private Jugador jugador;
+    private Dealer dealer;
+    private Mesa mesa;
+    private Dummy dummy;
+    private Agresivo agresivo;
+    private Pasivo pasivo;
+    private Bateador bateador;
+ 
+
+    public Juego(){
+        interfaz = new Interfaz();
+        simple = new Simple();
+        ficha = new Ficha();
+        jugador = new Jugador();
+        dealer = new Dealer();
+        mesa = new Mesa();
+        agresivo = new Agresivo();
+        pasivo = new Pasivo();
+
+    }
+    
+    public void ejecutar(){
+        
+        int respuesta = interfaz.escogerModalidad();
+        switch(respuesta){
+            case 1: int respuestaEnfrentamiento = interfaz.tipoEnfrentamiento();
+                switch(respuestaEnfrentamiento){
+                    case 1: 
+                    
+                    
+                    
+                    
+                    case 2: int respuestaTipo = interfaz.escogerJugadorCompu();
+                        
+    
+    
+    
+                    case 3: int respuestaTipoCompu = interfaz.escogerCompuCompu();
+    
+    
+                }   
+
+
+
+
+
+
+           }
+      }
+}
