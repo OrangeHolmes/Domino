@@ -15,6 +15,7 @@ public class EnfrentamientoSimple{
     private int cantidadDeFichas = 28;
     private int puntajeJugador1, puntajeJugador2, cantidadFichasInicio, aleatorio, posicionFichaJ1, posicionFichaJ2;
     private int ladoD1, ladoI1, ladoD2, ladoI2, ultimaPuestaI, ultimaPuestaD;
+    private boolean quienVa, fin, noHabemusFichas, turnoInicial;
     private String tipoJugador1, tipoJugador2;
     private Mesa tablero;
     
@@ -55,7 +56,7 @@ public class EnfrentamientoSimple{
      while( quienVa == false) { 
       this.ficha.asignarFichas( this.fichasTotales, this.fichasJugador1);
       this.ficha.asignarFichas( this.fichasTotales, this.fichasJugador2);
-          boolean turnoInicial = false;
+      boolean turnoInicial = false;
       int contadorFicha = 0;
       int contadorLado = 0;
      
@@ -70,12 +71,12 @@ public class EnfrentamientoSimple{
          ladoD2= this.ficha.getFicha(this.fichasJugador2,contadorFicha).getLadoDerecho();
          if( ladoI1 == contadorLado && ladoD1 == contadorLado){
          turnoInicial = true;
-         this.tablero += " "+ ladoI1 + "|" + ladoD1;
+        // this.tablero += " "+ ladoI1 + "|" + ladoD1;
          }
          else if (ladoI2 == contadorLado && ladoD2 == contadorLado){
           turnoInicial = true;
           quienVa = true;
-          this.tablero += " "+ ladoI2 + "|" + ladoD2;
+          //this.tablero += " "+ ladoI2 + "|" + ladoD2;
           }
         
         }    
