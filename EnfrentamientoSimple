@@ -137,11 +137,72 @@ public class EnfrentamientoSimple{
   } 
   
  }
-  
-  // public void compu_Vs_Compu(){
-    
+   public void compu_Vs_Compu(){
+      int tipoJuegoEscogido = interfaz.escogerCompuCompu();
+      
+      switch(tipoJuegoEscogido){
+        case 1:
+            this.agresivo1 = new Agresivo(jugador1); 
+            this.pasivo2 = new Pasivo(jugador2);
+            break;
+        case 2:
+            this.agresivo1 = new Agresivo(jugador1); 
+            this.bateador2 = new Bateador(jugador2);
+            break;
+        case 3:
+        this.agresivo1 = new Agresivo(jugador1); 
+            this.agresivo2 = new Agresivo(jugador2);
+            break;
+        case 4:
+            this.pasivo1 = new Pasivo(jugador1); 
+            this.bateador2 = new Bateador(jugador2);
+            break;
+        case 5:
+            this.pasivo1 = new Pasivo(jugador1); 
+            this.pasivo2 = new Pasivo(jugador2);
+            break;
+        case 6:
+            this.agresivo1 = new Bateador(jugador1); 
+            this.bateador = new Bateador(jugador2);
+            break;
+    }
+      this.usuario1 = new Dummy(jugador1); 
+      this.usuario2 = new Dummy(jugador2);
+      this.quienVa = false;
+      this.turnoInicial= false; 
+      ladoI1=0;
+      ladoD1=0;
+      ladoI2=0;
+      ladoD2=0;
+      fin = false;
+        while(fin){
+      quienVa = turnoInicial();
+      while( noHabemusFichas == false){
+       if(quienVa == false){
+         System.out.println("Turno del Jugador 1");
+         usuario1.horaDelDuelo(fichasJugador1);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
+         if( noHabemusFichas == true){
+          puntajeJugador1=ficha.getValor(fichasJugador2);
+        }  
+         quienVa=true;
+        }
+       if(quienVa == true){
+            System.out.println("Turno del Jugador 2");
+            noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
+            usuario2.horaDelDuelo(fichasJugador2);
+            if( noHabemusFichas == true){
+             puntajeJugador2=ficha.getValor(fichasJugador1);
+            }
+            quienVa = false;  
+        }  
+        }
+      if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
+       fin = true;
+      }
+    }
  
-  // }
+  }
     
    // public void usuario_VS_Compu(){
     
