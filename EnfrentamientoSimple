@@ -14,21 +14,24 @@ public class Simple{
     private Bateador bateador1, bateador2;
     private int cantidadDeFichas = 28;
     private int puntajeJugador1, puntajeJugador2, cantidadFichasInicio, aleatorio, posicionFichaJ1, posicionFichaJ2;
-    private int ladoD1, ladoI1, ladoD2, ladoI2, ultimaPuestaI, ultimaPuestaD;
+    private int ladoD1, ladoI1, ladoD2, ladoI2, ultimaPuestaI, ultimaPuestaD,cuales; // int cuales me dice a partir de donde saco fichas de la pila para repartir.
+    // ultimaPuestaI me dice que fue la ultima ficha puesta en el lado izquierdo de la mesa, de forma analoga pasa con ultimaPuestaD
     private boolean quienVa, fin, noHabemusFichas, turnoInicial;
     // El boolean quienVa me ayuda a alternar el turno entre el jugador 1 y el jugador 2
-    private String tipoJugador1, tipoJugador2;
+    private String mesa ;
     private Mesa tablero;
     
     
     public Simple(){
+        this.mesa = " ";
+        this.tablero = new Mesa(mesa);
         this.dealer = new Dealer();
         this.ficha = new Ficha();
         this.interfaz = new Interfaz();
         fichasJugador1 = new Ficha[15];
         fichasJugador2 = new Ficha[15];
-        this.jugador1= new Jugador(tipoJugador1, puntajeJugador1, fichasJugador1);
-        this.jugador2= new Jugador(tipoJugador2, puntajeJugador2, fichasJugador2);
+        this.jugador1= new Jugador( puntajeJugador1, fichasJugador1);
+        this.jugador2= new Jugador( puntajeJugador2, fichasJugador2);
         this.fichasTotales = new Ficha[28];
          for(int i = 0,j= 7,l= 13, m=18, n=22 ; i < 7; ++i, ++j,++l,++m, ++n){
              if( i<=6){
@@ -56,10 +59,13 @@ public class Simple{
     
     private boolean turnoInicial(){ // Este metodo me determina que jugador va de primero, y coloca esa primera ficha.
       boolean quienVa=false;
+      fichasTotales = ficha.revolverFichas(fichasTotales);
      while( quienVa == false) { 
-      this.ficha.asignarFichas( this.fichasTotales, this.fichasJugador1);
-      this.ficha.asignarFichas( this.fichasTotales, this.fichasJugador2);
-      boolean turnoInicial = false;
+      cuales = 0;
+      this.dealer.repartir( this.fichasTotales, this.fichasJugador1,cuales);
+      cuales = 7;
+      this.dealer.repartir( this.fichasTotales, this.fichasJugador2,cuales);
+      boolean turnoInicial = false; // si al finalizar el metodo turnoInicial es falso empieza el primer Jugador en caso contrario el segundo
       int contadorFicha = 0;
       int contadorLado = 0;
      
@@ -75,11 +81,16 @@ public class Simple{
          if( ladoI1 == contadorLado && ladoD1 == contadorLado){
          turnoInicial = true;
          System.out.println( " "+ ladoI1 + "|" + ladoD1);
+         this.ultimaPuestaI = contadorLado;
+         this.ultimaPuestaD= contadorLado;
+         this.tablero.colocarFicha("d",ultimaPuestaI, ultimaPuestaD);
          }
          else if (ladoI2 == contadorLado && ladoD2 == contadorLado){
           turnoInicial = true;
           quienVa = true;
-          System.out.println( " "+ ladoI2 + "|" + ladoD2);
+         this.ultimaPuestaI = contadorLado;
+         this.ultimaPuestaD= contadorLado;
+         this.tablero.colocarFicha("d",ultimaPuestaI, ultimaPuestaD);
           }
         
         }    
@@ -117,7 +128,7 @@ public class Simple{
        while( noHabemusFichas == false){
        if(quienVa == false){
          System.out.println("Turno del Jugador 1");
-         usuario1.horaDelDuelo(fichasJugador1);
+         usuario1.horaDelDuelo(fichasJugador1, tablero);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
          if( noHabemusFichas == true){
           //Si un jugador queda sin fichas noHabemusFichas se vuelve verdadero y me saca de un ciclo.
@@ -128,7 +139,7 @@ public class Simple{
         if(quienVa == true){
             System.out.println("Turno del Jugador 2");
             noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
-            usuario2.horaDelDuelo(fichasJugador2);
+            usuario2.horaDelDuelo(fichasJugador2, this.tablero);
             if( noHabemusFichas == true){
              puntajeJugador2=ficha.getValor(fichasJugador1);
             }
@@ -277,7 +288,7 @@ public class Simple{
        while( noHabemusFichas == false){
         if(quienVa == false){
          System.out.println("Turno del Jugador 1");
-         usuario1.horaDelDuelo(fichasJugador1);
+         usuario1.horaDelDuelo(fichasJugador1, this.tablero);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
@@ -307,7 +318,7 @@ public class Simple{
        while( noHabemusFichas == false){
         if(quienVa == false){
          System.out.println("Turno del Jugador 1");
-         usuario1.horaDelDuelo(fichasJugador1);
+         usuario1.horaDelDuelo(fichasJugador1, this.tablero);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
@@ -336,7 +347,7 @@ public class Simple{
        while( noHabemusFichas == false){
         if(quienVa == false){
          System.out.println("Turno del Jugador 1");
-         usuario1.horaDelDuelo(fichasJugador1);
+         usuario1.horaDelDuelo(fichasJugador1, this.tablero);
          noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
