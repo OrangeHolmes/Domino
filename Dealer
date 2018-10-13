@@ -14,6 +14,24 @@ public class Dealer{
 
     }
     
+     public Ficha[] repartir(Ficha[] fichasRecibidas, Ficha[] fichasEntregadas, int cuales){
+       // Reparte las fichas a cada jugador al inico de la partida;
+       Ficha ficha = new Ficha();
+     int contadorInterno = 0;
+      while(contadorInterno !=7){
+           fichasEntregadas[contadorInterno] = ficha.getFicha(fichasRecibidas,cuales );
+           fichasRecibidas[cuales] = null;
+           ++cuales;
+           ++contadorInterno;
+        } 
+        return fichasEntregadas;
+    }
+    
+    public Ficha demeFicha(Ficha[] fichas , int cual){
+     Ficha ficha = new Ficha();
+     return ficha.getFicha(fichas, cual);
+    }
+    
     public boolean tomarDecision(Ficha fichaSiguiente, Ficha[] fichasRestantes, boolean turno){
         boolean reparte = false;
         this.siguiente = siguiente;
