@@ -117,22 +117,6 @@ public class EnfrentamientoSimple{
      return quienVa;
    }
    
-   public void turnos(int posicionFichaJ, String ladoJ, Ficha[] fichasJ){
-       int ladoI=0;
-       int ladoD=0;
-       int posicionFicha = 0;
-      ladoI= this.ficha.getFicha(fichasJ,posicionFichaJ).getLadoIzquierdo();
-      ladoD= this.ficha.getFicha(fichasJ,posicionFichaJ).getLadoDerecho();
-      if(ladoJ.equalsIgnoreCase("i")){
-        this.tablero = ladoI + "|" + ladoD + " " + tablero ;
-        interfaz.mostrarfichasMesa(tablero);
-      }
-      else{
-       this.tablero = tablero + " "+ ladoI + "|" + ladoD;
-      }
-      System.out.println(this.tablero);
-   }
-  
    
     public void usuario_VS_Usuario(){
       
