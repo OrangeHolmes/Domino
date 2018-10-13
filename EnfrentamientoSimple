@@ -70,8 +70,8 @@ public class EnfrentamientoSimple{
          ladoI2= this.ficha.getFicha(this.fichasJugador2,contadorFicha).getLadoIzquierdo();
          ladoD2= this.ficha.getFicha(this.fichasJugador2,contadorFicha).getLadoDerecho();
          if( ladoI1 == contadorLado && ladoD1 == contadorLado){
-         turnoInicial = true;
-         System.out.println( " "+ ladoI1 + "|" + ladoD1);
+          turnoInicial = true;
+          System.out.println( " "+ ladoI1 + "|" + ladoD1);
          }
          else if (ladoI2 == contadorLado && ladoD2 == contadorLado){
           turnoInicial = true;
@@ -84,7 +84,8 @@ public class EnfrentamientoSimple{
          --contadorLado;
          ++contadorFicha;
          if( contadorFicha == 7){
-          turnoInicial = true; }
+          turnoInicial = true;
+        }
         }
         if(contadorFicha == 7){
          quienVa=false;}
@@ -119,7 +120,8 @@ public class EnfrentamientoSimple{
          if( noHabemusFichas == true){
           puntajeJugador1=ficha.getValor(fichasJugador2);
         }  
-         quienVa=true;}
+         quienVa=true;
+        }
         if(quienVa == true){
             System.out.println("Turno del Jugador 2");
             noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
@@ -135,10 +137,8 @@ public class EnfrentamientoSimple{
       }
     }
   } 
-  
- }
    public void compu_Vs_Compu(){
-      int tipoJuegoEscogido = interfaz.escogerCompuCompu();
+    int tipoJuegoEscogido = interfaz.escogerCompuCompu();
       
       switch(tipoJuegoEscogido){
         case 1:
@@ -163,11 +163,9 @@ public class EnfrentamientoSimple{
             break;
         case 6:
             this.agresivo1 = new Bateador(jugador1); 
-            this.bateador = new Bateador(jugador2);
+            this.bateador2 = new Bateador(jugador2);
             break;
     }
-      this.usuario1 = new Dummy(jugador1); 
-      this.usuario2 = new Dummy(jugador2);
       this.quienVa = false;
       this.turnoInicial= false; 
       ladoI1=0;
@@ -203,13 +201,54 @@ public class EnfrentamientoSimple{
     }
  
   }
-    
-   // public void usuario_VS_Compu(){
-    
-   
-       
-    
-   / } 
-    
-    
-    
+   public void usuario_VS_Compu(){
+    int tipoJuegoEscogido = interfaz.escogerJugadorCompu();
+       switch(tipoJuegoEscogido){
+        case 1:
+            this.agresivo1 = new Agresivo(jugador1);
+            break;
+        case 2:
+            this.pasivo1 = new Pasivo(jugador1);
+            break;
+        case 3:
+            this.bateador1 = new Bateador(jugador1);
+            break;
+        }
+      
+    this.usuario2 = new Dummy(jugador2);
+      this.quienVa = false;
+      this.turnoInicial= false; 
+      ladoI1=0;
+      ladoD1=0;
+      ladoI2=0;
+      ladoD2=0;
+      fin = false;
+        while(fin){
+      quienVa = turnoInicial();
+      while( noHabemusFichas == false){
+       if(quienVa == false){
+         System.out.println("Turno del Jugador 1");
+         usuario1.horaDelDuelo(fichasJugador1);
+         noHabemusFichas=this.ficha.noHayFichas(fichasJugador1);
+         if( noHabemusFichas == true){
+          puntajeJugador1=ficha.getValor(fichasJugador2);
+        }  
+         quienVa=true;
+        }
+       if(quienVa == true){
+            System.out.println("Turno del Jugador 2");
+            noHabemusFichas=this.ficha.noHayFichas(fichasJugador2);
+            usuario2.horaDelDuelo(fichasJugador2);
+            if( noHabemusFichas == true){
+             puntajeJugador2=ficha.getValor(fichasJugador1);
+            }
+            quienVa = false;  
+        }  
+        }
+      if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
+       fin = true;
+      }
+    }
+  } 
+ }
+
