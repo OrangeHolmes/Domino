@@ -1,30 +1,26 @@
-public class Dummy {
-// Esta clase representa al modelo de Jugador del usuario (humano).
+public class Dummy { 
   private Jugador jugador;
-  private Mesa miTablero; 
   private Interfaz interfaz;
   
   public Dummy(Jugador nuevo){
     Jugador dummy = nuevo;
     }
     
-  public void horaDelDuelo(Ficha [] fichas){
+  public void horaDelDuelo(Ficha [] fichas, Mesa mesa){
    Ficha ficha = new Ficha();
+   ficha.mostrarFichas(fichas);
    int posicionFichaJ=interfaz.decidirFicha();
-   // Llama al metodo de la interfaz que me permite escoger ficha.
    String ladoF = interfaz.decidirDireccion();
-   // Llama al metodo de la interfaz que me permite escoger de que lado del tablero quiero poner la ficha
-   miTurno(posicionFichaJ,ladoF, fichas, ficha);
+   miTurno(posicionFichaJ,ladoF, fichas, ficha , mesa);
   } 
   
-    private void miTurno(int posicionFichaJ, String ladoF, Ficha[] fichasJ, Ficha miFicha){
-     // Este metodo me coloca la ficha en el tablero.   
-     int ladoI=0;
-     int ladoD=0;
-     int posicionFicha = 0;
-     ladoI= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoIzquierdo();
-     ladoD= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoDerecho();
-     this.miTablero.colocarFicha(ladoF, ladoI, ladoD);
+    private void miTurno(int posicionFichaJ, String ladoF, Ficha[] fichasJ, Ficha miFicha, Mesa mesa){
+       int ladoI=0;
+       int ladoD=0;
+       int posicionFicha = 0;
+      ladoI= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoIzquierdo();
+      ladoD= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoDerecho();
+      mesa.colocarFicha(ladoF, ladoI, ladoD);
    }
     
     
