@@ -27,7 +27,7 @@ public class Pasivo{
       }
     ficha.mostrarFichas(fichas);
       }
-   public void queEsLaVaraPapi( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha){
+   public void diayDemosle( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha){
     boolean puedoSeguir= false;
     int ladoI=0;
     int ladoD=0;
