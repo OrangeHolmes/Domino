@@ -1,12 +1,13 @@
 public class Jugador{
+//Clase de un Jugador.
     public String nombre;
     public Ficha [] fichasJugador;
     public int puntos;
 
  public Jugador(){
- }
+ } //Constructor por omisión.
 
- public Jugador(String tipoJugador, int puntos, Ficha [] fichas){
+ public Jugador(String tipoJugador, int puntos, Ficha [] fichas){ //Constructor con parametros.
   this.nombre = tipoJugador; 
   this.puntos = puntos;
   this.fichasJugador = new Ficha [fichas.length];
@@ -16,12 +17,4 @@ public class Jugador{
    }
 
   } 
- public int cantidadFichas(){
-     
-    }
-  public Ficha[] getFichas(){
-
-      return fichasJugador;
-    } 
-
 }
