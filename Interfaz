@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Interfaz{
 	
 	public int escogerModalidad(){
+	// Me permite escoger si quiero modo simple o torneo.
 		Scanner entrada = new Scanner(System.in);
 		System.out.println ("Bienvenido al Juego \n Para empezar escoge la modalidad");
 		System.out.println ("1. Simple \t 2.Torneo");
@@ -10,6 +11,7 @@ public class Interfaz{
 		return respuesta;
 	}
 	public int tipoEnfrentamiento(){
+	//Si se escoge modo simple , entonces ahora se escoge que tipo de enfrentamiento quiere generar.
 		Scanner entrada = new Scanner(System.in);
 		System.out.println ("Ahora escoge el tipo de modo simple que quieras jugar");
 		System.out.println ("1.Usuario vs Computador \t 2.Usuario vs Usuario \t 3. Computador vs Computador");
@@ -17,6 +19,7 @@ public class Interfaz{
 		return respuesta;
 	}
 	public int escogerJugadorCompu(){
+	// Si se escoge "usuario vs computadora" , entonces ahora se escoge contra quién se quiere que enfrentar.
 		Scanner entrada = new Scanner(System.in);
 		System.out.println ("A quien te quieres enfrentar");
 		System.out.println ("1. Agresivo \t 2. Pasivo \t 3. Bateador ");
@@ -24,25 +27,23 @@ public class Interfaz{
 		return respuesta;
 	}
 	public int escogerCompuCompu(){
+	// Esto es para decidir que Jugadores artificiales se quiere poner a jugar.
 		Scanner entrada = new Scanner(System.in);
 		System.out.println ("Cuales jugadores quieres enfrentar");
 		System.out.println ("1.Agresivo vs Pasivo \t 2.Agresivo vs Bateador \t 3. Agresivo vs Agresivo \n 4.Pasivo vs Bateador \t 5. Pasivo vs Pasivo \n 6.Bateador vs Bateador ");
 	  int respuesta = entrada.nextInt();
 		return respuesta;
         }	
-	public void mostrarfichasMesa(String fichasMesatoString){
-		System.out.println (fichasMesatoString);
-	}
-	public void mostrarFichasDummy(String fichasDummytoString){
-		System.out.println (fichasDummytoString);
-	}
+
 	public int decidirFicha(){
+	//Me pide que ficha quiero poner
 		Scanner entrada = new Scanner(System.in);
 		System.out.println ("Elige la ficha que quieras usar");
 	        int decision= entrada.nextInt();
 		return decision;
 	}
 	public String decidirDireccion(){
+	//Me pide en que lado quiero poner la ficha.
 		Scanner entrada = new Scanner(System.in);
 		System.out.println ("¿Quieres colocarlo a la izquierda o la derecha?\t i/d");
 	        String lado = entrada.nextLine();
