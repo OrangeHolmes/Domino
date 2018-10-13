@@ -1,4 +1,5 @@
-public class Dummy { 
+public class Dummy {
+// Esta clase representa al modelo de Jugador del usuario (humano).
   private Jugador jugador;
   private Mesa miTablero; 
   private Interfaz interfaz;
@@ -10,17 +11,20 @@ public class Dummy {
   public void horaDelDuelo(Ficha [] fichas){
    Ficha ficha = new Ficha();
    int posicionFichaJ=interfaz.decidirFicha();
+   // Llama al metodo de la interfaz que me permite escoger ficha.
    String ladoF = interfaz.decidirDireccion();
+   // Llama al metodo de la interfaz que me permite escoger de que lado del tablero quiero poner la ficha
    miTurno(posicionFichaJ,ladoF, fichas, ficha);
   } 
   
     private void miTurno(int posicionFichaJ, String ladoF, Ficha[] fichasJ, Ficha miFicha){
-       int ladoI=0;
-       int ladoD=0;
-       int posicionFicha = 0;
-      ladoI= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoIzquierdo();
-      ladoD= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoDerecho();
-      this.miTablero.colocarFicha(ladoF, ladoI, ladoD);
+     // Este metodo me coloca la ficha en el tablero.   
+     int ladoI=0;
+     int ladoD=0;
+     int posicionFicha = 0;
+     ladoI= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoIzquierdo();
+     ladoD= miFicha.getFicha(fichasJ,posicionFichaJ).getLadoDerecho();
+     this.miTablero.colocarFicha(ladoF, ladoI, ladoD);
    }
     
     
