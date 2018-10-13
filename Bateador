@@ -6,10 +6,8 @@ public class Bateador {
   private Ficha miFicha;
   private Mesa miTablero;
  
-  public Bateador(Jugador nuevo, Ficha[] mias){
+  public Bateador(Jugador nuevo){
     bateador= nuevo; 
-    misFichas = mias;
-    
     }
 
   public void noSeJugar( Ficha[] fichasJ, int ultimoI, int ultimoD){
