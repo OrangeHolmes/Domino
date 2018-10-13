@@ -25,7 +25,7 @@
       }
     ficha.mostrarFichas(fichas);
       }
-   public void queEsLaVaraPapi( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha, Mesa mesa){
+   public void fichasAgresivo( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha, Mesa mesa){
     boolean puedoSeguir= false;
     int ladoI=0;
     int ladoD=0;
