@@ -1,63 +1,52 @@
-
-public class Agresivo {
-  private Ficha[] misFichas;
-  private Ficha miFicha;
-  private Mesa miTablero;
+ public class Agresivo {
+   private Mesa miTablero;
  
-  public Agresivo(){}
-  public Agresivo(Jugador nuevo){
-    Jugador agresivo = nuevo;
-    }
-   public void ordenar2(){
-   int valor1 = 0;
-   int valor2 = 0;
-   int aux =0;
-   for(int i=0; i <fichasTotales.length-1; ++i){
-     for(int j = 0; j < fichasTotales.length-i-1;++j){
-      valor1+=fichasTotales[j].getLadoIzquierdo();
-      valor1+= fichasTotales[j].getLadoDerecho();
-      valor2+=fichasTotales[j+1].getLadoIzquierdo();
-      valor2+= fichasTotales[j+1].getLadoDerecho();
-      if(valor2 > valor1){
-      Ficha tmp = fichasTotales[j];
-      fichasTotales[j] = fichasTotales[j+1];
-      fichasTotales[j+1] = tmp;} 
+   public Agresivo(){}
+  
+   public Agresivo(Jugador nuevo){
+     Jugador agresivo = nuevo;
      }
-      }
-    ficha.mostrarFichas(fichasTotales);
-  }
     
+   public void ordenar2(Ficha [] fichas){
+    int valor1 = 0;
+    int valor2 = 0;
+    Ficha ficha = new Ficha();
+    for(int i=0; i <fichas.length-1; ++i){
+     for(int j = 0; j < fichas.length-i-1;++j){
+      valor1+=fichas[j].getLadoIzquierdo();
+      valor1+= fichas[j].getLadoDerecho();
+      valor2+=fichas[j+1].getLadoIzquierdo();
+      valor2+= fichas[j+1].getLadoDerecho();
+      if(valor2 > valor1){
+       Ficha tmp = fichas[j];
+       fichas[j] = fichas[j+1];
+       fichas[j+1] = tmp;} 
+      }
+      }
+    ficha.mostrarFichas(fichas);
+      }
+   public void queEsLaVaraPapi( Ficha[] fichasJ, int ultimoI, int ultimoD, Ficha miFicha){
+    boolean puedoSeguir= false;
+    int ladoI=0;
+    int ladoD=0;
+    int cualSaco = 0;
+    String posicion = null;
+    boolean fichaValida = false;
+    while(puedoSeguir == false){
+    while(fichaValida == false){
+     miFicha = miFicha.escogerFicha(fichasJ,cualSaco);
+     fichaValida= miFicha.esValida(miFicha);
+     if(fichaValida == false) {
+      cualSaco +=1;}}
+    ladoI= miFicha.getLadoIzquierdo();
+    ladoD= miFicha.getLadoDerecho();
+    posicion = miFicha.comoColoco(ladoI, ladoD, ultimoI, ultimoD);
+    if( posicion != null){
+     puedoSeguir = true;}
     }
-  // public void queEsLaVaraPapi(Ficha[] arreglo, int ultimoI, int ultimoD){
-   // //Random aleatorio = new Random();
-   // this.misFichas = arreglo;
-   // boolean puedoSeguir= false;
-   // int ladoI=0;
-   // int ladoD=0;
-   // String posicion = null;
-   
-   
-   
-   
-   // // for(int i = 0; i < arreglo.length - 1; i++) {
-    // for(int j = 0; j < arreglo.length - 1; j++){
-    // if (arreglo[j] < arreglo[j + 1]){
-     // int tmp = arreglo[j+1];
-     // arreglo[j+1] = arreglo[j];
-     // arreglo[j] = tmp;}
-    // }
-    // }
+    this.miTablero.colocarFicha(posicion, ladoI, ladoD);
+   }
+  
+  }
 
-    // while(puedoSeguir == false){
-    // int n = aleatorio.nextInt(7)+1;
-    // this.miFicha = miFicha.escogerFicha(fichasJ,n);
-    // puedoSeguir= miFicha.esValida(miFicha);
-    // ladoI= miFicha.getLadoIzquierdo();
-    // ladoD= miFicha.getLadoDerecho();
-    // posicion = miFicha.comoColoco(ladoI, ladoD, ultimoI, ultimoD);
-    // if( posicion != null){
-     // puedoSeguir = true;}
-    // }
-    // this.miTablero.colocarFicha(posicion, ladoI, ladoD);
-   // }  
   
