@@ -33,3 +33,17 @@ public Pruebas(){
   int lado = 0;
   String l = fichasTotales[1].mostrarFichas(fichasTotales);
   String a = fichasTotales[1].mostrarFichas(fichas); }
+
+
+public Ficha[] repartir(Ficha[] fichasRecibidas, Ficha[] fichasRepartidas){
+       int fichasInicio = 7;
+       for(int i = 0; i < fichasInicio; i++){
+           while(fichasRecibidas[1] != null){
+           fichasRepartidas[i] = getFicha(fichasRecibidas, i);
+           fichasRecibidas[i] = null;
+           }
+           
+           
+       }
+       return fichasRepartidas;
+    }
