@@ -29,23 +29,24 @@ public class Ficha{
       return vector[posicion];    
       }
       
-    public Ficha[] asignarFichas(Ficha [] fichasRecibidas, Ficha [] fichasEntregadas){
+    public Ficha[] revolverFichas(Ficha [] fichasRecibidas){
     // Me reparte fichas de un vector a otro.
       Random random = new Random();
-      int cantidadDeFichas= 28;
-      int cantidadFichasInicio = 7;
       int aleatorio = 0;
-      boolean valido = false;
-      
-       for(int i = 0; i < cantidadFichasInicio; i++){
-        while(valido){
-           
-        aleatorio = random.nextInt(cantidadDeFichas);
-        fichasEntregadas[i] = fichasRecibidas [aleatorio];
-        valido = esValida(fichasEntregadas[i]);
+      Ficha temp = new Ficha();
+      for(int i = 0 ,j= fichasRecibidas.length -1; i < fichasRecibidas.length; ++i, --j){
+        temp = fichasRecibidas [i];
+        if(i+7 < 28){
+        fichasRecibidas[i] = fichasRecibidas [i+7];
+        fichasRecibidas[i+7] = temp;}
       }
-    }
-    return fichasEntregadas;
+      for(int i = 0; i < fichasRecibidas.length; ++i){
+        temp = fichasRecibidas [i];
+        if(i+3 < 28){
+        fichasRecibidas[i] = fichasRecibidas [i+3];
+        fichasRecibidas[i+3] = temp;}
+      }    
+    return fichasRecibidas;
    }
    
    public boolean noHayFichas(Ficha[] fichas){
