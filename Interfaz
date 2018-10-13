@@ -19,14 +19,14 @@ public class Interfaz{
 	public int escogerJugadorCompu(){
 		Scanner entrada = new Scanner(System.in);
 		System.out.println ("A quien te quieres enfrentar");
-		System.out.println ("1.Agresivo \t 2.Defensivo \t 3. Estratega");
+		System.out.println ("1. Agresivo \t 2. Pasivo \t 3. Bateador ");
 	  int respuesta = entrada.nextInt();
 		return respuesta;
 	}
 	public int escogerCompuCompu(){
 		Scanner entrada = new Scanner(System.in);
 		System.out.println ("Cuales jugadores quieres enfrentar");
-		System.out.println ("1.Agresivo vs Defensivo \t 2.Agresivo vs Estratega \t 3. Agresivo vs Agresivo \n 4.Defensivo vs Estratega \t 5. Defensivo vs Devensivo \n 6.Estratega vs Estratega");
+		System.out.println ("1.Agresivo vs Pasivo \t 2.Agresivo vs Bateador \t 3. Agresivo vs Agresivo \n 4.Pasivo vs Bateador \t 5. Pasivo vs Pasivo \n 6.Bateador vs Bateador ");
 	  int respuesta = entrada.nextInt();
 		return respuesta;
         }	
