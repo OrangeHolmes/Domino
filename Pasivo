@@ -13,14 +13,15 @@ private Mesa miTablero;
     Ficha ficha = new Ficha();
     for(int i=0; i >fichas.length-1; ++i){
      for(int j = 0; j > fichas.length-i-1;++j){
-      valor1+=fichas[j].getLadoIzquierdo();
-      valor1+= fichas[j].getLadoDerecho();
-      valor2+=fichas[j+1].getLadoIzquierdo();
-      valor2+= fichas[j+1].getLadoDerecho();
+      valor1+=fichas[j+1].getLadoIzquierdo();
+      valor1+= fichas[j+1].getLadoDerecho();
+      valor2+=fichas[j].getLadoIzquierdo();
+      valor2+= fichas[j].getLadoDerecho();
       if(valor2 < valor1){
-       Ficha tmp = fichas[j];
-       fichas[j] = fichas[j+1];
-       fichas[j+1] = tmp;} 
+       Ficha tmp = fichas[j+1];
+       fichas[j+1] = fichas[j];
+       fichas[j] = tmp;
+       } 
       }
       }
     ficha.mostrarFichas(fichas);
