@@ -8,24 +8,24 @@ public class Agresivo {
   public Agresivo(Jugador nuevo){
     Jugador agresivo = nuevo;
     }
-  public void ordenar(Ficha[]fichas){
+   public void ordenar2(){
    int valor1 = 0;
    int valor2 = 0;
-   for(int i=0; i <fichas.length; ++i){
-    valor1+=fichas[i].getLadoIzquierdo();
-    valor1+= fichas[i].getLadoDerecho();
-     for(int j = 1; j < fichas.length;++j){
-      valor2+=fichas[j].getLadoIzquierdo();
-      valor2+= fichas[j].getLadoDerecho();
-      if(valor1 < valor2){
-      Ficha tmp = fichas[i];
-      fichas[i] = fichas[j];
-      fichas[i] = tmp;}  
-      }
+   int aux =0;
+   for(int i=0; i <fichasTotales.length-1; ++i){
+     for(int j = 0; j < fichasTotales.length-i-1;++j){
+      valor1+=fichasTotales[j].getLadoIzquierdo();
+      valor1+= fichasTotales[j].getLadoDerecho();
+      valor2+=fichasTotales[j+1].getLadoIzquierdo();
+      valor2+= fichasTotales[j+1].getLadoDerecho();
+      if(valor2 > valor1){
+      Ficha tmp = fichasTotales[j];
+      fichasTotales[j] = fichasTotales[j+1];
+      fichasTotales[j+1] = tmp;} 
      }
-    miFicha.mostrarFichas(fichas);
-    //return fichas;
-   }  
+      }
+    ficha.mostrarFichas(fichasTotales);
+  }
     
     }
   // public void queEsLaVaraPapi(Ficha[] arreglo, int ultimoI, int ultimoD){
