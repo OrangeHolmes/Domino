@@ -35,16 +35,22 @@ public class Ficha{
       return vector[posicion];    
       }
       
-    public void asignarFichas(Ficha [] fichasRecibidas, Ficha [] fichasEntregadas){
+    public Ficha[] asignarFichas(Ficha [] fichasRecibidas, Ficha [] fichasEntregadas){
       Random random = new Random();
       int cantidadDeFichas= 28;
       int cantidadFichasInicio = 7;
       int aleatorio = 0;
+      boolean valido = false;
+      
        for(int i = 0; i < cantidadFichasInicio; i++){
+        while(valido){
+           
         aleatorio = random.nextInt(cantidadDeFichas);
         fichasEntregadas[i] = fichasRecibidas [aleatorio];
+        valido = esValida(fichasEntregadas[i]);
+      }
     }
-        
+    return fichasEntregadas;
    }
    
    public boolean noHayFichas(Ficha[] fichas){
