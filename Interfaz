@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
 public class Interfaz{
-
+    // @func: Le muestra al usuario las modalidades de Juego
+    // return : Retorna el int respuesta, para saber que clase de modo quiere jugar.
     public int escogerModalidad(){
         Scanner entrada = new Scanner(System.in);
         System.out.println ("Bienvenido al Juego \n Para empezar escoge la modalidad");
@@ -9,7 +10,8 @@ public class Interfaz{
         int respuesta = entrada.nextInt();
         return respuesta;
     }
-
+    // @ func : Le pide al usuario que tipo de enfrentamiento quiere jugar , si primero escogió modo simple
+    // @ return : int respuesta , nos ayuda a saber que modalidad escogió el jugador.
     public int tipoEnfrentamiento(){
         Scanner entrada = new Scanner(System.in);
         System.out.println ("Ahora escoge el tipo de modo simple que quieras jugar");
@@ -17,7 +19,8 @@ public class Interfaz{
         int respuesta = entrada.nextInt();
         return respuesta;
     }
-
+    // @ func : Le pide al usuario contra que tipo de jugador se quiere enfrentar si es que escogio "1" en tipoEnfrentamiento.
+    // @ return : int respuesta , nos ayuda a saber quien quiere enfrentarse el jugador.
     public int escogerJugadorCompu(){
         Scanner entrada = new Scanner(System.in);
         System.out.println ("A quien te quieres enfrentar");
@@ -25,7 +28,8 @@ public class Interfaz{
         int respuesta = entrada.nextInt();
         return respuesta;
     }
-
+    // @ func : Le pide al usuario que tipo de enfrentamiento quiere que se juegue, si en tipoEnfrentamiento escogió "3".
+    // @ return : int respuesta , nos ayuda a saber que modalidad escogió el jugador.
     public int escogerCompuCompu(){
         Scanner entrada = new Scanner(System.in);
         System.out.println ("Cuales jugadores quieres enfrentar");
@@ -33,36 +37,40 @@ public class Interfaz{
         int respuesta = entrada.nextInt();
         return respuesta;
     }	
+    // @ func : Le pide al usuario si quiere comer una ficha de la pila.
+    // @ return : String respuesta , nos ayuda a saber si quiere o no comer una ficha.
     public String quiereComerFichas(){
      Scanner entrada = new Scanner(System.in);
      System.out.println("Quiere comer una ficha");
      String respuesta = entrada.next();
      //if(respuesta != "SI" || respuesta != "si" || respuesta != "Si" || respuesta != "no" || respuesta != "NO" || repuesta != "No"){ 
-     return respuesta;
-    }
-    
+     return respuesta;}
+    // @ func : Le pide al usuario que escoja una ficha de un conjunto de las mismas.
+    // @ return : int decision , nos ayuda a saber que ficha escogio el jugador.
     public int decidirFicha(){
         Scanner entrada = new Scanner(System.in);
         System.out.println ("Elige la ficha que quieras usar");
         int decision= entrada.nextInt();
         return decision;
     }
-
-    public int decidirParejas(){
-     Scanner entrada = new Scanner(System.in);
-     System.out.println("Elije la cantidad de parejas que quieres enfrentar");
-     int decision = entrada.nextInt();
-     return decision;
-    }
+    // @ func : Le pide al usuario que decida como quiere colocar la ficha.
+    // @ return : String lado , nos ayuda a saber como quiere poner la ficha el jugador.
     public String decidirDireccion(){
         Scanner entrada = new Scanner(System.in);
-        System.out.println ("¿Quieres colocarlo a la izquierda o la derecha?\t i/d");
+        System.out.println ("¿Quieres colocarlo a la izquierda o la derecha?. Digite: i o d"+"\nEn caso de querer colocar la ficha de lado izquierdo o derecho pero dandole la vuelta. Digite -i o -d ");
         String lado = entrada.nextLine();
         return lado;
     }
-
+    // @ func: Se usa para poder enviar un mensaje desde la clase Dealer.
     public void mensajeDealer(String mensaje){
-        System.out.println ("");
+         System.out.println ("" + mensaje);
+     }
+    // @func : Me dice cuantos enfrentamientos quiere generar el usuario , si escogio antes el modo Torneo
+    //@return : Me retorna un número con la cantidad de enfrentamientos que seleccionó el usuario.
+     public int decidirCantEnfrentamientos(){
+     Scanner entrada = new Scanner(System.in);
+     System.out.println("Elije la cantidad de enfrentamientos que quieres generar");
+     int decision = entrada.nextInt();
+     return decision;
     }
-
 }
