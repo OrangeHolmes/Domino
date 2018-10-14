@@ -13,7 +13,11 @@ public class Dealer{
     public Dealer(){
 
     }
-    
+    // @func : Reparte fichas de la pila a la miniPila de fichas que tiene cada jugador
+    // @ param : Ficha [] fichasRecibidas es la pila de fichas totales.
+    // @ param : Ficha [] fichasEntregadas es la miniPila del usuario.
+    // @param : int cuales, es un contador que se le da externo al metodo para que sepa a partir de donde empezar a dar las fichas.
+    // @return : Me retorna un vector de Fichas para que las use el jugador.
      public Ficha[] repartir(Ficha[] fichasRecibidas, Ficha[] fichasEntregadas, int cuales){
        // Reparte las fichas a cada jugador al inico de la partida;
        Ficha ficha = new Ficha();
@@ -26,42 +30,40 @@ public class Dealer{
         } 
         return fichasEntregadas;
     }
-    
+    //@ func : Le da una ficha al jugador que lo solicite.
+    // @ param : Ficha [] fichas, es el vector de donde se saca la ficha.
+    // @param : int cuales, es un contador que se le da externo al metodo para que sepa cual lficha sacar.
+    // @ return : Me retorna una ficha para el jugador.
     public Ficha demeFicha(Ficha[] fichas , int cual){
      Ficha ficha = new Ficha();
      return ficha.getFicha(fichas, cual);
     }
-    
-    public boolean tomarDecision(Ficha fichaSiguiente, Ficha[] fichasRestantes, boolean turno){
-        boolean reparte = false;
-        this.siguiente = siguiente;
-        this.turno = turno;
-        this.fichasRestantes = fichasRestantes;
-        while(fichasRestantes.length > 0 && turno){
-            
-        }
-          return reparte;                                              //PREGUNTAR!!!
-    }
   
-   public int getPuntosGanador(Ficha[] fRestantesJ1, Ficha[] fRestantesJ2){
-        int puntosJ1 = ficha.getValor(fRestantesJ1);
-        int puntosJ2 = ficha.getValor(fRestantesJ2);
-        int puntosGanador = 0;
-        if(puntosJ1 > puntosJ2){
-            puntosGanador = puntosJ1 += puntosJ2;
-        }
-        else if(puntosJ2 > puntosJ1){
-            puntosGanador = puntosJ2 += puntosJ1;
-        }
-            return puntosGanador;
-        }
-   
-   public void quienGano(int puntajeJ1, int puntajeJ2){
-     if(puntajeJ1>=100){
-     interfaz.mensajeDealer("Gana el jugador 1");
+   // public int getPuntosGanador(Ficha[] fRestantesJ1, Ficha[] fRestantesJ2){
+        // int puntosJ1 = ficha.getValor(fRestantesJ1);
+        // int puntosJ2 = ficha.getValor(fRestantesJ2);
+        // int puntosGanador = 0;
+        // if(puntosJ1 > puntosJ2){
+            // puntosGanador = puntosJ1 += puntosJ2;
+        // }
+        // else if(puntosJ2 > puntosJ1){
+            // puntosGanador = puntosJ2 += puntosJ1;
+        // }
+            // return puntosGanador;
+        // }
+   //@ funcion : Me envia un mensaje de quién fue el jugador que ganó la partida.
+   // @param: int puntaje J1 corresponde a los puntos del jugadro 1, y int puntajeJ2 a los puntos del jugador 2 , se usan para compararlos y saber quien ganó
+   // @return : Me retorna el nombre del jugador que gano, ese dato será usado en otro metodo.
+   public String quienGano(int puntajeJ1, int puntajeJ2, String jugador1, String jugador2){
+    String ganador = " ";
+     if(puntajeJ1>=100){    
+     interfaz.mensajeDealer("Gana el " + jugador1);
+     ganador = jugador1;
     }
     if(puntajeJ2>=100){
-     interfaz.mensajeDealer("Gana el jugador 2");
+     interfaz.mensajeDealer("Gana el "+ jugador2);
+     ganador = jugador2;
     }
+    return ganador;
     }
 }
