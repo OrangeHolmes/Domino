@@ -1,6 +1,6 @@
-
 public class Torneo
 {
+    private Simple simple;
     private Interfaz interfaz;
     private Dealer dealer;
     private int cantDeParejas;
@@ -13,9 +13,45 @@ public class Torneo
     public void ejecutarTorneo()
     {
         cantDeParejas = interfaz.decidirParejas();
-        aleatorios = new aleatorios[cantDeParejas];
+        aleatorios = new int[cantDeParejas];
         for(int i=0; i< aleatorios.length; ++i){
-            aleatorios[i]=(int)(Math.Random*cantDeParejas+1);
+            aleatorios[i]=(int)(Math.random()*cantDeParejas+1);
     }
-    if(ganador.equalsIgnoreCase
+    
+ }
+ private String ejecutarEnfrentamientos( String tipoJugador1, String tipoJugador2){
+     String jugadorGanador = "";
+      if (tipoJugador1.equalsIgnoreCase("Dummy") && tipoJugador2.equalsIgnoreCase("Dummy")){
+        jugadorGanador=simple.usuario_VS_Usuario();
+        
+   } else if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Dummy")){
+        jugadorGanador=simple.usuario_VS_Compu(1);
+        
+   } else  if (tipoJugador1.equalsIgnoreCase("Pasivo") && tipoJugador2.equalsIgnoreCase("Dummy")){
+        jugadorGanador=simple.usuario_VS_Compu(2);
+        
+   } else     if (tipoJugador1.equalsIgnoreCase("Bateador") && tipoJugador2.equalsIgnoreCase("Dummy")){
+        jugadorGanador=simple.usuario_VS_Compu(3);
+        
+   } else     if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Pasivo")){
+        jugadorGanador=simple.compu_Vs_Compu(1);
+        
+   } else     if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Bateador")){
+        jugadorGanador=simple.compu_Vs_Compu(2);
+        
+   } else     if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Agresivo")){
+        jugadorGanador=simple.compu_Vs_Compu(3);
+        
+   } else     if (tipoJugador1.equalsIgnoreCase("Pasivo") && tipoJugador2.equalsIgnoreCase("Bateador")){
+        jugadorGanador=simple.compu_Vs_Compu(4);
+        
+   } else     if (tipoJugador1.equalsIgnoreCase("Pasivo") && tipoJugador2.equalsIgnoreCase("Pasivo")){
+        jugadorGanador=simple.compu_Vs_Compu(5);
+        
+   } else     if (tipoJugador1.equalsIgnoreCase("Bateador") && tipoJugador2.equalsIgnoreCase("Bateador")){
+        jugadorGanador=simple.compu_Vs_Compu(6);
+        
+  }
+  return jugadorGanador;
+ }
 }
