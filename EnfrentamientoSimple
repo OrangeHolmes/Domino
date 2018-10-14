@@ -18,7 +18,7 @@ public class Simple{
     // ultimaPuestaI me dice que fue la ultima ficha puesta en el lado izquierdo de la mesa, de forma analoga pasa con ultimaPuestaD
     private boolean quienVa, fin, noHabemusFichas, turnoInicial;
     // El boolean quienVa me ayuda a alternar el turno entre el jugador 1 y el jugador 2
-    private String mesa ;
+    private String mesa, jugadorGanador;
     private Mesa tablero;
     
     
@@ -49,11 +49,6 @@ public class Simple{
         fichasTotales [26] = new Ficha (5,6);
         fichasTotales [27] = new Ficha (6,6);
         
-        //this.fichasJugador1 = new Ficha[15];
-        //this.fichasJugador2 = new Ficha[15];
-        //this.modeloAgresivo = new Jugador ( tipoJugador1, puntajeJugador1, fichasJugador1);
-        //this.modeloBateador = new Jugador ( tipoJugador2, puntajeJugador2, fichasJugador2);
-        //this.modeloEstratega = new Jugador ( tipoJugador3, puntajeJugador3, fichasJugador3); 
         
     }
     
@@ -147,10 +142,11 @@ public class Simple{
         }  
         }
       if(this.puntajeJugador1 ==100 || puntajeJugador2 ==100){
+       // llamar aquí al dealer jugadorGanador = dealer.etc
        fin = true;
       }
     }
-  }
+   } //retorne el jugadorGanador
    public void compu_Vs_Compu(){
     int tipoJuegoEscogido = interfaz.escogerCompuCompu();
     this.quienVa = false;
