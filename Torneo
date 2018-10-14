@@ -15,7 +15,7 @@ public class Torneo
         cantDeParejas = interfaz.decidirParejas();
         aleatorios = new aleatorios[cantDeParejas];
         for(int i=0; i< aleatorios.length; ++i){
-            aleatorios[i]=(int)(Math.random*cantDeParejas+1);
+            aleatorios[i]=(int)(Math.Random*cantDeParejas+1);
     }
     if(ganador.equalsIgnoreCase
 }
