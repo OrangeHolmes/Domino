@@ -1,6 +1,3 @@
-
-
-
 public class Juego{
     private Interfaz interfaz;
     private Simple simple;
@@ -12,7 +9,7 @@ public class Juego{
     private Agresivo agresivo;
     private Pasivo pasivo;
     private Bateador bateador;
- 
+    private Torneo torneo;
 
     public Juego(){
         interfaz = new Interfaz();
@@ -39,20 +36,22 @@ public class Juego{
                     
                     
                     
-                    case 2: int respuestaTipo = interfaz.escogerJugadorCompu();
-                    simple.compu_Vs_Compu();
+                    case 2:
+                    int respuestaTipo = interfaz.escogerCompuCompu();
+                    simple.compu_Vs_Compu(respuestaTipo);
                     break;
                         
     
     
     
-                    case 3: int respuestaTipoCompu = interfaz.escogerCompuCompu();
-                    simple.usuario_VS_Compu();
+                    case 3: int respuestaTipoCompu = interfaz.escogerJugadorCompu();
+                    simple.usuario_VS_Compu(respuestaTipoCompu);
                     break;
     
     
                 }   
-
+            case 2:
+            torneo.ejecutarTorneo();
 
 
 
