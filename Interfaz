@@ -38,7 +38,8 @@ public class Interfaz{
      System.out.println("Quiere comer una ficha");
      String respuesta = entrada.next();
      //if(respuesta != "SI" || respuesta != "si" || respuesta != "Si" || respuesta != "no" || respuesta != "NO" || repuesta != "No"){ 
-     return respuesta;}
+     return respuesta;
+    }
     
     public int decidirFicha(){
         Scanner entrada = new Scanner(System.in);
@@ -47,6 +48,12 @@ public class Interfaz{
         return decision;
     }
 
+    public int decidirParejas(){
+     Scanner entrada = new Scanner(System.in);
+     System.out.println("Elije la cantidad de parejas que quieres enfrentar");
+     int decision = entrada.nextInt();
+     return decision;
+    }
     public String decidirDireccion(){
         Scanner entrada = new Scanner(System.in);
         System.out.println ("¿Quieres colocarlo a la izquierda o la derecha?\t i/d");
