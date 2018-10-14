@@ -165,7 +165,8 @@ public class Simple{
     }
     return jugadorGanador;
   }
-  @Funcion: Este metodo ejecuta el enfrentamiento del de la computadora contra ella misma.
+  /*
+   * @Funcion: Este metodo ejecuta el enfrentamiento del de la computadora contra ella misma.
    @Param: Recibe un int que viene desde Juego o desde Torneo, ese int va a determinar el tipo de jugador(la estrategia) de cada contrincante.
    @Return: Retorna un String con el nombre del jugador ganador, que será utilizado por el dealer para mostar en pantalla el ganador,
    y por Torneo para ver quién pasa a la siguiente ronda.
@@ -422,6 +423,7 @@ public class Simple{
       return jugadorGanador;
  
   }
+  /* 
    @Funcion: Este metodo ejecuta el enfrentamiento del usuario contra la computadora.
    @Param: Recibe un int que viene desde Juego o desde Torneo, este int determina el tipo de contrincante que el usuario eligió.
    @Return: Retorna un String con el nombre del jugador ganador, que será utilizado por el dealer para mostar en pantalla el ganador,
