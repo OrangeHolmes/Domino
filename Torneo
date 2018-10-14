@@ -31,7 +31,7 @@ public class Torneo
           jugadorD= ejecutarEnfrentamientos(jugadorA, jugadorB);
           System.out.println( "El ganador de esta ronda es " + jugadorD);
           } 
-         if( i %2 == 0){ // Cuando tenga un numero par, distinto de "cantdeenfrentamientos - 1" y 0 , se me van a enfrentar el jugador C y el D
+         if( i %2 == 0 && i !=cantDeEnfrentamientos -1){ // Cuando tenga un numero par, distinto de "cantdeenfrentamientos - 1" y 0 , se me van a enfrentar el jugador C y el D
           jugadorC= ejecutarEnfrentamientos(jugadorC, jugadorD);
           System.out.println( "El ganador de esta ronda es " + jugadorC);
           jugadorD = null; // ya jugadorD será nulo para evitar que vuelva a concursar el mismo participante
