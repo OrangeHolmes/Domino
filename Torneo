@@ -1,0 +1,21 @@
+
+public class Torneo
+{
+    private Interfaz interfaz;
+    private Dealer dealer;
+    private int cantDeParejas;
+    private int[] aleatorios;
+    private String ganador;
+    public Torneo()
+    {
+    }
+
+    public void ejecutarTorneo()
+    {
+        cantDeParejas = interfaz.decidirParejas();
+        aleatorios = new aleatorios[cantDeParejas];
+        for(int i=0; i< aleatorios.length; ++i){
+            aleatorios[i]=(int)(Math.random*cantDeParejas+1);
+    }
+    if(ganador.equalsIgnoreCase
+}
