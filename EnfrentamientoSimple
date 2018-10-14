@@ -56,8 +56,12 @@ public class Simple{
         //this.modeloEstratega = new Jugador ( tipoJugador3, puntajeJugador3, fichasJugador3); 
         
     }
-    
-    private boolean turnoInicial(){ // Este metodo me determina que jugador va de primero, y coloca esa primera ficha.
+    /*
+    @Función: Este metodo me determina que jugador va de primero, y coloca esa primera ficha.
+    @Param:No recibe.
+    @Return: Retorna un true/false, que se utiliza para determinar cual jugador va primero segun sea verdadero o falso.
+    */
+    private boolean turnoInicial(){
       boolean quienVa=false;
       fichasTotales = ficha.revolverFichas(fichasTotales);
      while( quienVa == false) { 
@@ -109,8 +113,13 @@ public class Simple{
      } 
      return quienVa;
    }
-   
-   
+  
+  /*
+   @Funcion: Este metodo ejecuta el enfrentamiento del Dummy contra el Dummy.
+   @Param: No recibe.
+   @Return: Retorna un String con el nombre del jugador ganador, que será utilizado por el dealer para mostar en pantalla el ganador,
+   y por Torneo para ver quién pasa a la siguiente ronda.
+   */
     public String usuario_VS_Usuario(){
       
       String jugadorGanador = "";
@@ -156,6 +165,11 @@ public class Simple{
     }
     return jugadorGanador;
   }
+  @Funcion: Este metodo ejecuta el enfrentamiento del de la computadora contra ella misma.
+   @Param: Recibe un int que viene desde Juego o desde Torneo, ese int va a determinar el tipo de jugador(la estrategia) de cada contrincante.
+   @Return: Retorna un String con el nombre del jugador ganador, que será utilizado por el dealer para mostar en pantalla el ganador,
+   y por Torneo para ver quién pasa a la siguiente ronda.
+   */
    public String compu_Vs_Compu(int respuestaTipo){
     String jugadorGanador ="";
     int tipoJuegoEscogido = respuestaTipo;
@@ -408,7 +422,11 @@ public class Simple{
       return jugadorGanador;
  
   }
-   
+   @Funcion: Este metodo ejecuta el enfrentamiento del usuario contra la computadora.
+   @Param: Recibe un int que viene desde Juego o desde Torneo, este int determina el tipo de contrincante que el usuario eligió.
+   @Return: Retorna un String con el nombre del jugador ganador, que será utilizado por el dealer para mostar en pantalla el ganador,
+   y por Torneo para ver quién pasa a la siguiente ronda.
+   */
    public String usuario_VS_Compu(int tipoEscogidoCompu){
     String jugadorGanador = "";
        int tipoJuegoEscogido = tipoEscogidoCompu; 
