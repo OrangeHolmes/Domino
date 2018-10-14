@@ -19,6 +19,30 @@ public class Torneo
     }
     
  }
+ 
+ private String queJugador(int jugador){
+    String decisionJugador = null;
+    switch(jugador){
+        case 1: decisionJugador = "Agresivo";
+        break;
+        
+        case 2: decisionJugador = "Pasivo";
+        break;
+        
+        case 3: decisionJugador = "Bateador";
+        break;
+        
+        case 4: decisionJugador = "Dummy";
+        break;
+        
+        default:decisionJugador = "Dummy";
+
+    }
+    return decisionJugador;
+
+    }
+ 
+ 
  private String ejecutarEnfrentamientos( String tipoJugador1, String tipoJugador2){
      String jugadorGanador = "";
       if (tipoJugador1.equalsIgnoreCase("Dummy") && tipoJugador2.equalsIgnoreCase("Dummy")){
