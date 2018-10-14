@@ -1,28 +1,60 @@
+import java.util.Random;
 public class Torneo
 {
     private Simple simple;
+    private Random random;
     private Interfaz interfaz;
     private Dealer dealer;
     private int cantDeParejas;
     private int[] aleatorios;
     private String ganador;
     public Torneo()
-    {
+    { random = new Random();
     }
-
+    // @func: Este metodo me produce los enfrentamientos pedidos por el usuario en el modo Torneo.
     public void ejecutarTorneo()
     {
-        cantDeParejas = interfaz.decidirParejas();
-        aleatorios = new int[cantDeParejas];
-        for(int i=0; i< aleatorios.length; ++i){
-            aleatorios[i]=(int)(Math.random()*cantDeParejas+1);
-    }
+        int cantDeEnfrentamientos= interfaz.decidirCantEnfrentamientos();
+        String jugadorA , jugadorB, jugadorC = " ", jugadorD = " ";
+        int aleatorio1 , aleatorio2;
+        for(int i = 0; i < cantDeEnfrentamientos; ++i){ // Mientras el contador sea menor al largo
+         if( i == 0){ // Si i = 0,(caso unico) se me enfrentan dos jugadores aleatorios y de aquí sale el Jugador C
+          aleatorio1 =random.nextInt(4); aleatorio2 = random.nextInt(4);
+          jugadorA =queJugador(aleatorio1); jugadorB=queJugador(aleatorio2);
+          jugadorC= ejecutarEnfrentamientos(jugadorA, jugadorB);
+          System.out.println( "El ganador de esta ronda es " + jugadorC);
+          }
+         if( i%2 !=0 && i !=cantDeEnfrentamientos -1){ // Aquí con todos los numeros impares exceptuando el de "cantDeEnfrentamientos -1"
+          // me va a combatir dos jugadores aleatorios y me va a dar un JugadorD
+          aleatorio1 =random.nextInt(4); aleatorio2 = random.nextInt(4);
+          jugadorA =queJugador(aleatorio1); jugadorB=queJugador(aleatorio2);
+          jugadorD= ejecutarEnfrentamientos(jugadorA, jugadorB);
+          System.out.println( "El ganador de esta ronda es " + jugadorD);
+          } 
+         if( i %2 == 0){ // Cuando tenga un numero par, distinto de "cantdeenfrentamientos - 1" y 0 , se me van a enfrentar el jugador C y el D
+          jugadorC= ejecutarEnfrentamientos(jugadorC, jugadorD);
+          System.out.println( "El ganador de esta ronda es " + jugadorC);
+          jugadorD = null; // ya jugadorD será nulo para evitar que vuelva a concursar el mismo participante
+          }
+         if( i == cantDeEnfrentamientos -1) { //Siempre que se llegue a cantDeEnfrentamientos -1 , estaré en una segunda ronda o ronda final , en la cual,
+           // debería tener dos jugadores para que combatan , si no es así significa que la cantidad de los enfrentamientos de tipo primera ronda era impar y
+           // uno de los dos que necesito enfrentar aquí tiene un valor de nulo;
+          if(jugadorD == null){
+           System.out.println( "El ganador por default es " + jugadorC);
+            }
+          else {jugadorC= ejecutarEnfrentamientos(jugadorC, jugadorD);
+          System.out.println( "El ganador por final" + jugadorC);}
+          } 
+        }
+        
     
- }
- 
- private String queJugador(int jugador){
-    String decisionJugador = null;
-    switch(jugador){
+    }
+ // @func: Sirve en el metodo publico usado por esta clase para poder escoger un jugador de forma aleatoria para los enfrentamientos
+ // @parametro : int jugador , es un numero aleatorio que se le va a pasar para así poder escoger un jugador
+ // @return: Me retorna un string con el jugador seleccionado de forma aleatoria 
+    private String queJugador(int jugador){
+     String decisionJugador = null;
+     switch(jugador){
         case 1: decisionJugador = "Agresivo";
         break;
         
@@ -37,45 +69,47 @@ public class Torneo
         
         default:decisionJugador = "Dummy";
 
-    }
-    return decisionJugador;
+     }
+     return decisionJugador;
 
-    }
+     }
  
- 
- private String ejecutarEnfrentamientos( String tipoJugador1, String tipoJugador2){
+    // @funci: Me funciona para poder ejecutar un enfrentamiento dependiendo de los jugadores que yo le pase
+    // @ param: String tipoJugador1 y tipoJugador2 , son dos jugadores que yo le doy para que dentro del metodo se comparen y dependiendo de su nombre se ejcute un tipo determinado de enfrentamiento
+    // @ return: me retorna un String con el nombre del jugador ganador de cada enfrentamiento
+    private String ejecutarEnfrentamientos( String tipoJugador1, String tipoJugador2){
      String jugadorGanador = "";
       if (tipoJugador1.equalsIgnoreCase("Dummy") && tipoJugador2.equalsIgnoreCase("Dummy")){
         jugadorGanador=simple.usuario_VS_Usuario();
         
-   } else if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Dummy")){
+      } else if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Dummy")){
         jugadorGanador=simple.usuario_VS_Compu(1);
         
-   } else  if (tipoJugador1.equalsIgnoreCase("Pasivo") && tipoJugador2.equalsIgnoreCase("Dummy")){
+      } else  if (tipoJugador1.equalsIgnoreCase("Pasivo") && tipoJugador2.equalsIgnoreCase("Dummy")){
         jugadorGanador=simple.usuario_VS_Compu(2);
         
-   } else     if (tipoJugador1.equalsIgnoreCase("Bateador") && tipoJugador2.equalsIgnoreCase("Dummy")){
+      } else     if (tipoJugador1.equalsIgnoreCase("Bateador") && tipoJugador2.equalsIgnoreCase("Dummy")){
         jugadorGanador=simple.usuario_VS_Compu(3);
         
-   } else     if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Pasivo")){
+      } else     if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Pasivo")){
         jugadorGanador=simple.compu_Vs_Compu(1);
         
-   } else     if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Bateador")){
+      } else     if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Bateador")){
         jugadorGanador=simple.compu_Vs_Compu(2);
         
-   } else     if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Agresivo")){
+      } else     if (tipoJugador1.equalsIgnoreCase("Agresivo") && tipoJugador2.equalsIgnoreCase("Agresivo")){
         jugadorGanador=simple.compu_Vs_Compu(3);
         
-   } else     if (tipoJugador1.equalsIgnoreCase("Pasivo") && tipoJugador2.equalsIgnoreCase("Bateador")){
+      } else     if (tipoJugador1.equalsIgnoreCase("Pasivo") && tipoJugador2.equalsIgnoreCase("Bateador")){
         jugadorGanador=simple.compu_Vs_Compu(4);
         
-   } else     if (tipoJugador1.equalsIgnoreCase("Pasivo") && tipoJugador2.equalsIgnoreCase("Pasivo")){
+      } else     if (tipoJugador1.equalsIgnoreCase("Pasivo") && tipoJugador2.equalsIgnoreCase("Pasivo")){
         jugadorGanador=simple.compu_Vs_Compu(5);
         
-   } else     if (tipoJugador1.equalsIgnoreCase("Bateador") && tipoJugador2.equalsIgnoreCase("Bateador")){
+      } else     if (tipoJugador1.equalsIgnoreCase("Bateador") && tipoJugador2.equalsIgnoreCase("Bateador")){
         jugadorGanador=simple.compu_Vs_Compu(6);
         
-  }
-  return jugadorGanador;
- }
+       }
+      return jugadorGanador;
+    }
 }
