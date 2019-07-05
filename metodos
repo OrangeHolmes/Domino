@@ -1,0 +1,65 @@
+void colorflip(Nodo * abuelo, Nodo * padre, Nodo * hijo) {
+				abuelo->color = ROJO;
+				abuelo->hijo[DER]->color = NEGRO;
+				abuelo->hijo[IZQ]->color = NEGRO;
+}
+
+
+int validar(Nodo ** bisabuelo, Nodo * abuelo, Nodo * padre, Nodo * hijo){
+				int valido = 0;
+				if(bisabuelo && abuelo && padre && hijo){
+					if(*bisabuelo==abuelo){    //solo sostiene o tiene que saber cual es
+						if( (abuelo->hijo[IZQ] == padre || abuelo->hijo[DER] == padre)  && 
+						(padre->hijo[IZQ] == hijo || padre->hijo[DER] == hijo) ){
+							valido = 1;
+						}
+					}
+				}
+				return valido;
+}
+
+
+int operacion(Nodo ** bisabuelo, Nodo * abuelo, Nodo * padre, Nodo * hijo){
+				int operacion = MALO;
+				if( validar(bisabuelo,abuelo,padre,hijo)){
+					operacion = NADA;
+					if(abuelo->color == NEGRO && abuelo->hijo[IZQ]->color == ROJO &&   //revisar solo abueko?
+					abuelo->hijo[DER]->color == ROJO ){
+						operacion = CF;
+					}
+					if(!opeacion && padre->color == ROJO & hijo->color == ROJO){
+						if(abuelo->hijo[IZQ] == padre){
+							if(padre->hijo[IZQ] == hijo){
+								operacion = RSD;
+							}
+							else{
+								operacion = RDD;
+							}
+						}
+						else{
+							if(padre-hijo[DER] == hijo){
+								opeacion = RSI;
+							}
+							else{
+								operacion = RDI;
+							}
+						}
+					}
+
+				}
+				return operacion;
+		}
+    
+    
+    void insertar(int valor){
+		   if(raiz){
+			   if(raiz->getColor() == ROJO){
+				   raiz->setColor(NEGRO);
+			   }
+			   raiz->insertar(valor,*this);
+		   }
+		   else {
+			   raiz = new Nodo(valor,NEGRO);
+               cout<<"raiz:"<<valor<<endl;
+		   }
+	   }
